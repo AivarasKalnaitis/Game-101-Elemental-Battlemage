@@ -4,60 +4,104 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController2D controller;
+    //public CharacterController2D controller;
 
-    float horizontalMove = 0f;
+    float horizontalSpeed = 10f;
+    [SerializeField] private bool facingRight = true;
+    [SerializeField] private int extraJumpValue = 10;
+    [SerializeField] private int extraJumps = 1;
+    [SerializeField] private float moveInput;
+    public LayerMask whatIsGround;
+    public Transform groundCheck;
+    [SerializeField]
+    private float checkRadius;
+    [SerializeField] private bool isGrounded;
 
-    public float runSpeed = 40f;
-    public float fallMultiplier = 2.5f;
-    public float lowJumpMultiplier = 2f;
+    private bool jumpRequest = false;
 
     Rigidbody2D rb;
+    
 
-    bool jump = false;
-    bool crouch = false;
-
+    [SerializeField]
     [Range(1, 10)]
-    public float jumpVelocity;
+    private float jumpVelocity;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * jumpVelocity;
-        }
-
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
-
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch = true;
-        }
-        else if (Input.GetButtonUp("Crouch"))
-        {
-            crouch = false;
-        }
+        extraJumps = extraJumpValue;
     }
 
     private void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-        jump = false;
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+
+        FlipOnMouse();
+        HorizontalMovement();
+        Jumping();
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        JumpRequest();
+    }
+
+
+    private void HorizontalMovement()
+    {
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
+    }
+
+    private void JumpRequest()
+    {
+
+            if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
+            {
+                jumpRequest = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded == true)
+            {
+                jumpRequest = true;
+            }
+
+            if (isGrounded == true)
+                extraJumps = extraJumpValue;
+    }
+
+    private void Jumping()
+    {
+        if (jumpRequest)
+        {
+            rb.velocity = Vector2.up * jumpVelocity;
+            extraJumps--;
+            jumpRequest = false;
+        }
+    }
+
+    private void FlipOnMouse()
+    {
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - gameObject.transform.position.x < 0 && facingRight)
+            Flip();
+        else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - gameObject.transform.position.x > 0 &&
+                 !facingRight)
+            Flip();
+    }
+
+    public void Flip()
+    {
+        //gameObject.GetComponentInChildren<MeleeWeapon>().transform.rotation = Quaternion.Euler(0f, 0f, -gameObject.GetComponentInChildren<MeleeWeapon>().transform.rotation.z);
+        facingRight = !facingRight;
+        Vector3 Scaler = transform.localScale;
+        Scaler.x *= -1;
+        transform.localScale = Scaler;
+    }
+    
 }
