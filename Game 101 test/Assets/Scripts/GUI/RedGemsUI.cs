@@ -11,12 +11,12 @@ public class RedGemsUI : MonoBehaviour
     void Start()
     {
         textMP = gameObject.GetComponent<TextMeshProUGUI>();
-        textMP.SetText("Red: " + redGemsQ);
+        textMP.SetText("" + redGemsQ);
     }
 
     void Update()
     {
-        textMP.SetText("Red: " + redGemsQ);
+        textMP.SetText("" + redGemsQ);
     }
 
     public void RedGemsPlus()
