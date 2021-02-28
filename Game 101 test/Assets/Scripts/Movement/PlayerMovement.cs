@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-
         FlipOnMouse();
         HorizontalMovement();
         Jumping();
@@ -87,17 +86,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FlipOnMouse()
     {
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - gameObject.transform.position.x < 0 && facingRight)
             Flip();
-        else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - gameObject.transform.position.x > 0 &&
-                 !facingRight)
+        else if (Camera.main.ScreenToWorldPoint(Input.mousePosition).x - gameObject.transform.position.x > 0 && !facingRight)
             Flip();
     }
 
     public void Flip()
     {
-        //gameObject.GetComponentInChildren<MeleeWeapon>().transform.rotation = Quaternion.Euler(0f, 0f, -gameObject.GetComponentInChildren<MeleeWeapon>().transform.rotation.z);
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
