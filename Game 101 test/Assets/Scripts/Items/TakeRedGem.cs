@@ -9,23 +9,6 @@ public class TakeRedGem : MonoBehaviour
     private EdgeCollider2D edgeCollider;
     private TakeRedGem script;    
 
-    void Awake()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Instantiate(redGemPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnTriggerEnter2D(Collider2D other )
     {
         if (other.CompareTag("Player"))
