@@ -6,13 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     //public CharacterController2D controller;
 
-    float horizontalSpeed = 10f;
+    [SerializeField] private float horizontalSpeed = 10f;
     [SerializeField] private bool facingRight = true;
     [SerializeField] private int extraJumpValue = 10;
     [SerializeField] private int extraJumps = 1;
     [SerializeField] private float moveInput;
     public LayerMask whatIsGround;
     public Transform groundCheck;
+    public GameObject Spellbook;
     [SerializeField]
     private float checkRadius;
     [SerializeField] private bool isGrounded;
@@ -48,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //Debug.Log(Camera.main.WorldToScreenPoint(Input.mousePosition));
         JumpRequest();
     }
 
@@ -98,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+        Spellbook.GetComponent<BookMovement>().Flip();
     }
     
 }
