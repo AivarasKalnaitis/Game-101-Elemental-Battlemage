@@ -101,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
-        Spellbook.GetComponent<BookMovement>().Flip();
+        Spellbook.GetComponent<BookHandler>().Flip();
     }
     
 }

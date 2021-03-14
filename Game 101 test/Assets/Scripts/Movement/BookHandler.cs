@@ -4,7 +4,7 @@ using System.Net.Mime;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class BookMovement : MonoBehaviour
+public class BookHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform playerPos;
@@ -51,5 +51,4 @@ public class BookMovement : MonoBehaviour
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-
 }
