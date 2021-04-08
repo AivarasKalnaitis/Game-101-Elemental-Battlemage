@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float checkRadius;
     [SerializeField] private bool isGrounded;
-    private Animator anim;
+
     private bool jumpRequest = false;
 
     private Rigidbody2D rb;
@@ -31,25 +31,14 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerComponents Components
     {
-
         get { return components; }
-    }
-
-    public AnyStateAnimator Animator
-    {
-        get { return animator; }
     }
     private void Awake()
     {
-        anim = new Animator();
-        anim = gameObject.GetComponent<Animator>();
-        //  components = new PlayerComponents();
-        //animator = GetComponent<AnyStateAnimator>();
     }
 
     private void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
             
         extraJumps = extraJumpValue;
@@ -57,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         AnyStateAnimation[] animations = new AnyStateAnimation[]
         {
             new AnyStateAnimation(RIG.BODY, "Body_Idle"),
+            new AnyStateAnimation(RIG.BODY, "Body_Walk"),
 
             new AnyStateAnimation(RIG.LEGS, "Legs_Idle"),
             new AnyStateAnimation(RIG.LEGS, "Legs_Walk"),
@@ -67,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         };
 
-        animator.AddAnimations(animations);
+        components.Animator.AddAnimations(animations);
 
     }
 
@@ -80,11 +70,11 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        Debug.Log("");
-       // anim.Play("Legs_Walk");
-        //animator.TryPlayAnimation("Legs_Walk");
+
+        //Debug.Log(Camera.main.WorldToScreenPoint(Input.mousePosition));
         JumpRequest();
     }
 
@@ -92,27 +82,7 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMovement()
     {
         moveInput = Input.GetAxis("Horizontal");
-
         rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
-
-        if (moveInput != 0)
-        {
-            // Finds it?
-            animator.TryPlayAnimation("Legs_Walk");
-            animator.TryPlayAnimation("Arms_Walk");
-            animator.TryPlayAnimation("Body_Idle");
-            // Finds it?
-
-        }
-        else if (moveInput == 0)
-        {
-            // Finds it?    
-            animator.TryPlayAnimation("Legs_Idle");
-            animator.TryPlayAnimation("Arms_Idle");
-            animator.TryPlayAnimation("Body_Idle");
-            // Finds it?
-
-        }
     }
 
     private void JumpRequest()
