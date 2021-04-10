@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [Range(1, 10)]
     private float jumpVelocity;
 
+    private bool onIce = false;
+
 
     public PlayerComponents Components
     {
@@ -71,6 +73,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Ice")
+        {
+            onIce = true;
+        }
+    }
+
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
@@ -82,9 +92,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("");
-       // anim.Play("Legs_Walk");
-        //animator.TryPlayAnimation("Legs_Walk");
         JumpRequest();
     }
 
@@ -93,25 +100,28 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
-
-        if (moveInput != 0)
+        if(onIce)
         {
-            // Finds it?
-            animator.TryPlayAnimation("Legs_Walk");
-            animator.TryPlayAnimation("Arms_Walk");
-            animator.TryPlayAnimation("Body_Idle");
-            // Finds it?
-
+            rb.AddForce(new Vector2(moveInput * horizontalSpeed*3f, rb.velocity.y));
+            onIce = false;
         }
-        else if (moveInput == 0)
-        {
-            // Finds it?    
-            animator.TryPlayAnimation("Legs_Idle");
-            animator.TryPlayAnimation("Arms_Idle");
-            animator.TryPlayAnimation("Body_Idle");
-            // Finds it?
 
+        else
+        {
+            rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
+
+            if (moveInput != 0)
+            {
+                animator.TryPlayAnimation("Legs_Walk");
+                animator.TryPlayAnimation("Arms_Walk");
+                animator.TryPlayAnimation("Body_Idle");
+            }
+            else if (moveInput == 0)
+            {
+                animator.TryPlayAnimation("Legs_Idle");
+                animator.TryPlayAnimation("Arms_Idle");
+                animator.TryPlayAnimation("Body_Idle");
+            }
         }
     }
 

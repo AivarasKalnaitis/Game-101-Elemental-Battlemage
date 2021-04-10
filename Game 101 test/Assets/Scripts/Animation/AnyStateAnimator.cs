@@ -49,10 +49,8 @@ public class AnyStateAnimator : MonoBehaviour
 
         void PlayAnimation(ref string currentAnimation)
         {
-            Debug.Log("PlayAnimBeforeIf");
             if (currentAnimation == "")
             {
-                Debug.Log("CurrentEmpty");
                 animations[newAnimation].Active = true;
                 currentAnimation = newAnimation;
                 animator.Play(currentAnimation);
@@ -60,8 +58,6 @@ public class AnyStateAnimator : MonoBehaviour
             }
             else if (currentAnimation != newAnimation)
             {
-                Debug.Log("CurrentNotEmpty");
-                Debug.Log(currentAnimation);
                 animations[currentAnimation].Active = false;
                 animations[newAnimation].Active = true;
                 currentAnimation = newAnimation;

@@ -8,15 +8,15 @@ public class TakeRedGem : MonoBehaviour
 {
     public GameObject TextCanvas;
     private EdgeCollider2D edgeCollider;
-    private TakeRedGem script;    
+    private TakeRedGem script;
+    private Animator animator;
 
-    void OnTriggerEnter2D(Collider2D other )
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             TextCanvas.GetComponent<RedGemsUI>().RedGemsPlus();
             Destroy(gameObject);
-            Debug.Log("Player touched me !");
             spawnRedGem();
             
         }
@@ -33,8 +33,12 @@ public class TakeRedGem : MonoBehaviour
         GameObject newRedGem = Instantiate(gameObject, spawnPosition, Quaternion.identity);
         edgeCollider = newRedGem.GetComponent<EdgeCollider2D>();
         edgeCollider.enabled = true;
+
         script = newRedGem.GetComponent<TakeRedGem>();
         script.enabled = true;
+
+        animator = newRedGem.GetComponent<Animator>();
+        animator.enabled = true;
     }
 
 
