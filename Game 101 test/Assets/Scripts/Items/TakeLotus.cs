@@ -6,10 +6,15 @@ public class TakeLotus : MonoBehaviour
 {
     private AudioSource japaneseBruh;
     public GameObject SoundMaster;
+    private ParticleSystem explodeParticles;
+    private ParticleSystem.EmissionModule em;
+
     void Start()
     {
         japaneseBruh = SoundMaster.GetComponent<AudioSource>();
-
+        explodeParticles = GetComponentInParent<ParticleSystem>();
+        em = explodeParticles.emission;
+        em.enabled = false;
     }
 
     private void PlayJapaneseBruh()
@@ -22,8 +27,9 @@ public class TakeLotus : MonoBehaviour
         if (other.collider.tag == "Player")
         {
             PlayJapaneseBruh();
+            em.enabled = true;
+            explodeParticles.Play();
             Destroy(gameObject);
         }
     }
-
 }
