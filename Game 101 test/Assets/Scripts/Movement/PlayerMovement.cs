@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private float jumpVelocity;
 
     private bool onIce = false;
+    private bool inVines = false;
 
 
     public PlayerComponents Components
@@ -79,6 +80,10 @@ public class PlayerMovement : MonoBehaviour
         {
             onIce = true;
         }
+        else if(collision.tag == "Vine")
+        {
+            inVines = true;
+        }
     }
 
     private void FixedUpdate()
@@ -104,6 +109,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector2(moveInput * horizontalSpeed*3f, rb.velocity.y));
             onIce = false;
+        }
+
+        else if(inVines)
+        {
+            rb.velocity = new Vector2(moveInput * horizontalSpeed*0.5f, rb.velocity.y);
+            inVines = false;
         }
 
         else
