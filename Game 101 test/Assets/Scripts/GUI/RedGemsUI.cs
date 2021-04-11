@@ -8,6 +8,7 @@ public class RedGemsUI : MonoBehaviour
 {
     private TextMeshProUGUI textMP;
     public int redGemsQ = 0;
+
     void Start()
     {
         textMP = gameObject.GetComponent<TextMeshProUGUI>();

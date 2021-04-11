@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TakeLotus : MonoBehaviour
 {
+    public GameObject TextCanvas;
     private AudioSource japaneseBruh;
     public GameObject SoundMaster;
     private ParticleSystem explodeParticles;
@@ -26,6 +27,7 @@ public class TakeLotus : MonoBehaviour
     {
         if (other.collider.tag == "Player")
         {
+            TextCanvas.GetComponent<LotusUI>().LotusPlus();
             PlayJapaneseBruh();
             em.enabled = true;
             explodeParticles.Play();
