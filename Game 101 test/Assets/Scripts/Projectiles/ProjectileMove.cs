@@ -14,4 +14,11 @@ public class ProjectileMove : MonoBehaviour
         else
             Debug.Log("No speed");
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        speed = 0;
+
+        Destroy(gameObject);
+    }
 }
