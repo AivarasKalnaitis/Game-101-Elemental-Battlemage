@@ -7,6 +7,18 @@ public class ProjectileMove : MonoBehaviour
     public float speed;
     public float fireRate;
 
+    public GameObject muzzlePrefab;
+    public GameObject hitPrefab;
+
+    private void Start()
+    {
+        if(muzzlePrefab != null)
+        {
+            var muzzleVFX = Instantiate(muzzlePrefab, transform.position, Quaternion.identity);
+            muzzleVFX.transform.forward = gameObject.transform.forward;
+        }
+    }
+
     void Update()
     {
         if (speed != 0)
@@ -18,6 +30,15 @@ public class ProjectileMove : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0;
+
+        ContactPoint2D contact = collision.contacts[0];
+        Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
+        Vector2 pos = contact.point;
+
+        if(hitPrefab != null)
+        {
+            var hitVFX = Instantiate(hitPrefab, pos, rot);
+        }
 
         Destroy(gameObject);
     }
