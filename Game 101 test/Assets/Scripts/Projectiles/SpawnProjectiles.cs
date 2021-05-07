@@ -13,7 +13,7 @@ public class SpawnProjectiles : MonoBehaviour
 
     private void Start()
     {
-        effectToSpawn = vfx[0];
+        effectToSpawn = vfx[1];
     }
 
     private void Update()
