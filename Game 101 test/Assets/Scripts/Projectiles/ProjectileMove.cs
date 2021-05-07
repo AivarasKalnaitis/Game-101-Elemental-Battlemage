@@ -21,9 +21,10 @@ public class ProjectileMove : MonoBehaviour
 
     void Update()
     {
+        
         if (speed != 0)
             transform.position += transform.forward * (speed * Time.deltaTime);
-        else
+        //else
             Debug.Log("No speed");
     }
 

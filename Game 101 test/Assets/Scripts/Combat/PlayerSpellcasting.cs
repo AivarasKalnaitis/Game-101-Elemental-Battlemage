@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,11 +13,15 @@ public class PlayerSpellcasting : MonoBehaviour
     public float LingeringTimeMax;
     public bool CanCast;
     public string CurrentElement;
+    public GameObject SpellArchives;
     public TextMeshProUGUI castedSpell;
     public TextMeshProUGUI currentElementDisplay;
+    private float spellRestingTime;
+    private Component SpellIt;
     // public List<string> Element; Do we really need it?
     void Start()
     {
+        spellRestingTime = 0f;
         ChangeToFire();
         castedSpell.text = "";
         LingeringTimeMax = 6f;
@@ -28,8 +33,10 @@ public class PlayerSpellcasting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LingeringTime -= Time.deltaTime;
-        if (LingeringTime <= 0)
+        float TimeDelta = Time.deltaTime;
+        LingeringTime -= TimeDelta;
+        spellRestingTime -= TimeDelta;
+        if (LingeringTime < 0)
         {
             CurrentStage = 1;
             LingeringTime = LingeringTimeMax;
@@ -72,9 +79,12 @@ public class PlayerSpellcasting : MonoBehaviour
 
         if (CanCast)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (spellRestingTime < 0)
             {
-                CastSpell();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    CastSpell();
+                }
             }
         }
     }
@@ -82,17 +92,20 @@ public class PlayerSpellcasting : MonoBehaviour
     void CastSpell()
     {
         string currentCastedSpell = CurrentElement + "_" + CurrentStage;
+
         castedSpell.text = currentCastedSpell;
+
         CurrentStage++;
+
         LingeringTime = LingeringTimeMax;
+        
 
         if (CurrentStage > 3)
         {
             CurrentStage = 1;
         }
-
-        Invoke(currentCastedSpell, 0f);
-
+        SpellArchives.GetComponent<AbilityArchives>().CastSpell(CurrentElement, CurrentStage.ToString());
+        spellRestingTime = SpellArchives.GetComponent<AbilityArchives>().SpellRestingTime;
 
     }
 
