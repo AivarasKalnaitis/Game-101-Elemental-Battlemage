@@ -94,17 +94,14 @@ public class PlayerSpellcasting : MonoBehaviour
         string currentCastedSpell = CurrentElement + "_" + CurrentStage;
 
         castedSpell.text = currentCastedSpell;
-
+        SpellArchives.GetComponent<AbilityArchives>().CastSpell(CurrentElement, CurrentStage.ToString());
         CurrentStage++;
-
         LingeringTime = LingeringTimeMax;
-        
 
         if (CurrentStage > 3)
         {
             CurrentStage = 1;
         }
-        SpellArchives.GetComponent<AbilityArchives>().CastSpell(CurrentElement, CurrentStage.ToString());
         spellRestingTime = SpellArchives.GetComponent<AbilityArchives>().SpellRestingTime;
 
     }
