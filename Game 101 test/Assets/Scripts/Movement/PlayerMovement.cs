@@ -5,12 +5,14 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //public CharacterController2D controller;
-
+    
     [SerializeField] private float horizontalSpeed = 10f;
     [SerializeField] private bool facingRight = true;
     [SerializeField] private int extraJumpValue = 10;
     [SerializeField] private int extraJumps = 1;
     [SerializeField] private float moveInput;
+    public Node playerNode = new Node();
+
     public LayerMask whatIsGround;
     public Transform groundCheck;
     public GameObject Spellbook;
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerComponents Components
     {
-
+        
         get { return components; }
     }
 
@@ -52,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-
+        
         rb = GetComponent<Rigidbody2D>();
             
         extraJumps = extraJumpValue;
@@ -178,5 +180,7 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = Scaler;
         Spellbook.GetComponent<BookHandler>().Flip();
     }
+
+
     
 }

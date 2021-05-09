@@ -11,6 +11,7 @@ public class SpawnProjectiles : MonoBehaviour
     public RotateToMouse rotateToMouse;
 
     private GameObject effectToSpawn;
+    public GameObject GameMasterGO;
     private float timeToFire = 0;
 
     public Dictionary<string, GameObject> AllSpellVFX;
@@ -62,13 +63,13 @@ public class SpawnProjectiles : MonoBehaviour
         {
 
             vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.identity);
-
+            // CHECK FROM HERE WHY Vfx Spark doesn't work as intended
+            vfx.GetComponent<ProjectileMove>().gameMaster = GameMasterGO;
+            
             if (rotateToMouse != null)
             { 
                 vfx.transform.localRotation = rotateToMouse.GetRotation();
-
-
-                }
+            }
         }
         else
             Debug.Log("No fire point");

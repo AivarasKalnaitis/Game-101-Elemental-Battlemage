@@ -1,14 +1,17 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ProjectileMove : MonoBehaviour
 {
     public float speed;
     public float fireRate;
-
     public GameObject muzzlePrefab;
     public GameObject hitPrefab;
+    public GameObject gameMaster;
+
+    public int pointsForSlime = 100;
 
     private void Start()
     {
@@ -21,24 +24,31 @@ public class ProjectileMove : MonoBehaviour
 
     void Update()
     {
-        
+
+
+        // čia tai geras šūdas
+        // var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity);
         if (speed != 0)
             transform.position += transform.forward * (speed * Time.deltaTime);
-        //else
+        else
             Debug.Log("No speed");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         speed = 0;
-
         ContactPoint2D contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
         Vector2 pos = contact.point;
-
+        
         if(hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, pos, rot);
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject); 
+            gameMaster.GetComponent<Scores>().AddPoint(pointsForSlime);
         }
 
         Destroy(gameObject);

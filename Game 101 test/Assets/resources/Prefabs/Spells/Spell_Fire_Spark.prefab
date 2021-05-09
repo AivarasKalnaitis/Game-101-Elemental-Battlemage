@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1850400908503724977}
   m_Layer: 0
-  m_Name: FireSpark
+  m_Name: Spell_Fire_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4867,8 +4867,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -843112415
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -4920,7 +4920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651f7d61add718e40beb32666e89c589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 0
   fireRate: 1
   muzzlePrefab: {fileID: 0}
   hitPrefab: {fileID: 0}
