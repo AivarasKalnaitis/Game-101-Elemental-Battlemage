@@ -9,7 +9,12 @@ public class Scores : MonoBehaviour
     private int totalScore = 0;
     public GameObject SoundMaster;
     public TextMeshProUGUI pointsText;
+    public GameObject EndScreen;
 
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     void Start()
     {
         pointsText.text = totalScore.ToString();
@@ -26,6 +31,12 @@ public class Scores : MonoBehaviour
         return gameObject;
     }
 
+    public void GameEnd()
+    {
+        Time.timeScale = 0.02f;
+        EndScreen.SetActive(true);
+
+    }
     
     
 }

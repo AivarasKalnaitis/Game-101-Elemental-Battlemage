@@ -43,4 +43,10 @@ public class MenuScript : MonoBehaviour
     {
 
     }
+
+    public void PlayButton()
+    {
+        SceneManager.LoadScene("Assets/Scenes/Bloodbath_1.unity");
+
+    }
 }
