@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerComponents components;
 
     [SerializeField]
-    [Range(1, 10)]
+    [Range(1, 20)]
     private float jumpVelocity;
 
     private bool onIce = false;

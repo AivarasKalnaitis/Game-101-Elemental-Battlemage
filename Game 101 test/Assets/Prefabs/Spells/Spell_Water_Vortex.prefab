@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4189334029849445716}
   - component: {fileID: 4189334029849445715}
   - component: {fileID: 4686769827585562834}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spell_Water_Vortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.16166785, g: 0.1820507, b: 0.1981132, a: 1}
+      maxColor: {r: 0.16082235, g: 0.1635638, b: 0.24528301, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -285,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 5
+      scalar: 7
       minScalar: 4
       maxCurve:
         serializedVersion: 2
@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 150
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -982,14 +982,41 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.0020523071
-          value: 0.43243408
-          inSlope: 0
-          outSlope: 0
+          time: 0
+          value: 0.12474188
+          inSlope: 1.4441696
+          outSlope: 1.4441696
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0
+          outWeight: 0.15812238
+        - serializedVersion: 3
+          time: 0.24150327
+          value: 0.35892668
+          inSlope: 1.2728581
+          outSlope: 1.2728581
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.47471267
+          value: 0.56350553
+          inSlope: 0.9893454
+          outSlope: 0.9893454
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 0.6599711
+          value: 0.6769231
+          inSlope: 0.20977348
+          outSlope: 0.20977348
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 1
@@ -1542,8 +1569,8 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 4
+      scalar: 15
+      minScalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4777,8 +4804,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1988448035
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

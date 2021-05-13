@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask whatIsGround;
 
+    public bool AffectedByVortex;
+
     public Rigidbody2D rb;
     public float movementSpeed = 10;
     public float jumpVelocity = 10f;
@@ -30,6 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+
         rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(axis * movementSpeed, rb.velocity.y),
             Time.deltaTime * lerpSpeed);
         if (fire)
@@ -48,6 +51,10 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (AffectedByVortex)
+        {
+            AddForceToIt();
+        }
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         if (isGrounded)
         {
@@ -72,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void FireAway(float loadTime)
     {
-        Invoke("FireTruth", 1.5f);
+        Invoke("FireTruth", 1f);
     }
 
     private void FireTruth()
@@ -90,6 +97,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
+
         if (other.collider.tag == "Player")
         {
             PlayerGO.GetComponent<PlayerStats>().TakeDamage(10);
@@ -97,6 +105,10 @@ public class EnemyMovement : MonoBehaviour
         }   
     }
 
+    public void AddForceToIt()
+    {
+        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 1000 * Time.deltaTime;
+    }
 
 
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850400908503724977}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spell_Fire_Spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1850400908626553825}
   - component: {fileID: 1850400908626553826}
   - component: {fileID: 1850400908626553831}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireSpark vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}

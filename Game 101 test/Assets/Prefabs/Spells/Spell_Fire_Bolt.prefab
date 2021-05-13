@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6602337791313439123}
   - component: {fileID: -8781962301535821219}
   - component: {fileID: -592142045030184548}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Spell_Fire_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4863,11 +4863,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 1
-  destroyableObject:
-    serializedVersion: 2
-    m_Bits: 512
   muzzlePrefab: {fileID: 0}
   hitPrefab: {fileID: 159918, guid: a0040bf7072bc2f4e82d887d50a9c5e2, type: 3}
+  gameMaster: {fileID: 0}
+  pointsForSlime: 100
 --- !u!58 &-8781962301535821219
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -31,10 +31,10 @@ public class SpawnProjectiles : MonoBehaviour
 
         AllSpellVFX = GetVfxDictionary(vfx);
 
-        foreach (KeyValuePair<string, GameObject> kvp in AllSpellVFX)
-        {
-            Debug.Log(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
-        }
+//        foreach (KeyValuePair<string, GameObject> kvp in AllSpellVFX)
+//        {
+//            Debug.Log(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+//        }
     }
 
     public Dictionary<string, GameObject> GetVfxDictionary(List<GameObject> vfx)
@@ -75,4 +75,6 @@ public class SpawnProjectiles : MonoBehaviour
         else
             Debug.Log("No fire point");
     }
+
+
 }

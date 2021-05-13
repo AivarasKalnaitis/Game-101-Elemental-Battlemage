@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3180225740478361238}
   - component: {fileID: 3180225740478361236}
   - component: {fileID: 3180225740478361237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,11 +26,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3180225740478361239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.37, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3180225741593822169}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &3180225740478361236
 ParticleSystem:
@@ -47,7 +47,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -55,7 +55,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 2
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.07088822, g: 0.16063903, b: 0.5566038, a: 1}
-      maxColor: {r: 0, g: 0.93189937, b: 0.9716981, a: 1}
+      maxColor: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -746,7 +746,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.16
+      value: 0.5
       mode: 0
       spread: 0
       speed:
@@ -975,8 +975,8 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 5
-        minScalar: 5
+        scalar: 20
+        minScalar: 10
         maxCurve:
           serializedVersion: 2
           m_Curve:
@@ -4899,7 +4899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3180225741593822169}
   - component: {fileID: 7101910402292936696}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spell_Ice_Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4917,8 +4917,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3180225741904044516}
   - {fileID: 3180225740478361238}
+  - {fileID: 3180225741904044516}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4970,7 +4970,7 @@ GameObject:
   - component: {fileID: 3180225741904044516}
   - component: {fileID: 3180225741904044514}
   - component: {fileID: 3180225741904044515}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ice ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4985,11 +4985,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3180225741904044517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: -0.1, z: 0}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3180225741593822169}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3180225741904044514
 ParticleSystem:
@@ -4999,7 +4999,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3180225741904044517}
   serializedVersion: 7
-  lengthInSec: 9
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5074,7 +5074,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 6.5
+      scalar: 4
       minScalar: 3
       maxCurve:
         serializedVersion: 2
@@ -5705,7 +5705,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.1
+      value: 1
       mode: 0
       spread: 0
       speed:
@@ -6016,8 +6016,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.09813644
-          value: 0.8876191
+          time: 0.14329483
+          value: 0.95172316
           inSlope: 0.07142707
           outSlope: 0.07142707
           tangentMode: 0
@@ -6025,8 +6025,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.123421244
         - serializedVersion: 3
-          time: 0.75611097
-          value: 0.8534102
+          time: 0.4894341
+          value: 0.25404733
           inSlope: -0.048080478
           outSlope: -0.048080478
           tangentMode: 0
@@ -6034,8 +6034,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.4527417
         - serializedVersion: 3
-          time: 0.86652976
-          value: 0.009493768
+          time: 0.5869582
+          value: 0.025515497
           inSlope: 1
           outSlope: 1
           tangentMode: 0
@@ -9822,7 +9822,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -843112415
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

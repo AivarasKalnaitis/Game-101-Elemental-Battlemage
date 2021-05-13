@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2923054677945955685}
   - component: {fileID: 2923054677945955686}
   - component: {fileID: 2923054677945955683}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FireSpark vfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4893,3 +4893,5 @@ MonoBehaviour:
   fireRate: 1
   muzzlePrefab: {fileID: 0}
   hitPrefab: {fileID: 0}
+  gameMaster: {fileID: 0}
+  pointsForSlime: 100

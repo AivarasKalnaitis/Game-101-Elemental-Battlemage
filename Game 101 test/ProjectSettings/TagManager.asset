@@ -7,6 +7,7 @@ TagManager:
   - Ice
   - Vine
   - Enemy
+  - Water_Vortex
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Background
   - Gem
   - Enemy
-  - 
-  - 
+  - Spell
+  - Projectile
   - 
   - 
   - 
