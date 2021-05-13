@@ -56,20 +56,21 @@ public class SpawnProjectiles : MonoBehaviour
 
     public void SpawnVFX(string key)
     {
-
         GameObject vfx;
 
         if (firePoint != null)
         {
-
             vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.identity);
             // CHECK FROM HERE WHY Vfx Spark doesn't work as intended
-            vfx.GetComponent<ProjectileMove>().gameMaster = GameMasterGO;
+            //vfx.GetComponent<ProjectileMove>().gameMaster = GameMasterGO;
             
             if (rotateToMouse != null)
             { 
                 vfx.transform.localRotation = rotateToMouse.GetRotation();
             }
+
+            // TODO: use polymorphism or many methods to destroy objects after some time in different ways (example: water vortex velocity over lifetime starts reducing and vortex "falls down"
+            Destroy(vfx, 5f);
         }
         else
             Debug.Log("No fire point");
