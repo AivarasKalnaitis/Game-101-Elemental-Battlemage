@@ -37,6 +37,7 @@ public class RotateToMouse : MonoBehaviour
 
     void RotateToMouseDirection(GameObject obj, Vector2 destination)
     {
+
         direction = destination - new Vector2(obj.transform.position.x, obj.transform.position.y);
         rotation = Quaternion.LookRotation(direction);
         obj.transform.localRotation = Quaternion.Lerp(obj.transform.rotation, rotation, 1);

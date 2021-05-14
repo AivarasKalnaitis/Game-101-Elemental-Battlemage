@@ -41,17 +41,21 @@ public class ProjectileMove : MonoBehaviour
         ContactPoint2D contact = collision.contacts[0];
         Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
         Vector2 pos = contact.point;
-        
-        if(hitPrefab != null)
+
+        if (hitPrefab != null)
         {
             var hitVFX = Instantiate(hitPrefab, pos, rot);
         }
+
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject); 
+            Destroy(collision.gameObject);
             gameMaster.GetComponent<Scores>().AddPoint(pointsForSlime);
         }
 
-        Destroy(gameObject);
+        if (collision.gameObject.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

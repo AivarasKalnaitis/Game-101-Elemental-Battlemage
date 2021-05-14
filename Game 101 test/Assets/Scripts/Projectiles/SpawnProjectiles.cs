@@ -11,14 +11,14 @@ public class SpawnProjectiles : MonoBehaviour
     public RotateToMouse rotateToMouse;
 
     private GameObject effectToSpawn;
-    public GameObject GameMasterGO;
+    // public GameObject GameMasterGO; Not sure, never used it?
     private float timeToFire = 0;
 
     public Dictionary<string, GameObject> AllSpellVFX;
 
     private void Start()
     {
-//       // var prefTemp = Resources.Load("Assets/resources/Prefabs/Spells/FireSpark.prefab", GameObject) as GameObject;
+//        var prefTemp = Resources.Load("Assets/resources/Prefabs/Spells/FireSpark.prefab", GameObject) as GameObject;
 //        GameObject prefabTemporary;
 //        AllSpellVFX = new Dictionary<string, GameObject>();
 //        prefabTemporary = (GameObject) Resources.Load("Assets/resources/Prefabs/Spells/FireSpark", typeof(GameObject));
@@ -36,6 +36,7 @@ public class SpawnProjectiles : MonoBehaviour
 //            Debug.Log(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
 //        }
     }
+
 
     public Dictionary<string, GameObject> GetVfxDictionary(List<GameObject> vfx)
     {
@@ -60,8 +61,18 @@ public class SpawnProjectiles : MonoBehaviour
 
         if (firePoint != null)
         {
-            vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.identity);
 
+            Vector3 cursorDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) -
+                                      gameObject.GetComponentInParent<Transform>().position;
+
+            float rot = Mathf.Atan(cursorDirection.y / cursorDirection.x) * 57.2958f;
+            vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.Euler(0f, 0f, rot + 45f));
+
+            Debug.Log(rot);
+            // vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position,
+            //                Quaternion.FromToRotation(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), (Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position)));
+            //            Quaternion.Euler(0f, 0f, )
+            //Quaternion.FromToRotation()
             // CHECK FROM HERE WHY Vfx Spark doesn't work as intended
             //vfx.GetComponent<ProjectileMove>().gameMaster = GameMasterGO;
             /*

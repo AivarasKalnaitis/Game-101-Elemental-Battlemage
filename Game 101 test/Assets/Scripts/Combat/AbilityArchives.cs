@@ -33,7 +33,7 @@ public class AbilityArchives : MonoBehaviour
         PreparedSpells.Add("Earth_2", "Spell_Rock_Toss");
         PreparedSpells.Add("Earth_3", "Spell_Planetary_Devastation");
 
-        VfxList = GetComponent<SpawnProjectiles>().AllSpellVFX;
+        VfxList = GetComponent<SpawnProjectiles2>().AllSpellVFX;
     }
 
     void Update()
@@ -54,15 +54,15 @@ public class AbilityArchives : MonoBehaviour
         SpellRestingTime = 1f;
         
         spellTemp.text = "Spell Fire Spark";
-        gameObject.GetComponent<SpawnProjectiles>().SpawnVFX("Spell_Fire_Spark");
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        gameObject.GetComponent<SpawnProjectiles2>().SpawnVFX("Spell_Fire_Spark");
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
     private void Spell_Water_Bubble()
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Water_Splash";
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
     private void Spell_Rock_Splash()
@@ -77,7 +77,7 @@ public class AbilityArchives : MonoBehaviour
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Fire_Bolt";
         //gameObject.GetComponent<SpawnProjectiles>().SpawnVFX("Spell_Fire_Bolt");
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
 
     }
 
@@ -85,7 +85,7 @@ public class AbilityArchives : MonoBehaviour
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Ice_Spikes";
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
     private void Spell_Rock_Toss()
@@ -109,7 +109,7 @@ public class AbilityArchives : MonoBehaviour
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Water_Vortex";
         Debug.Log(SpellKey);
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
 
     }
 
@@ -117,6 +117,6 @@ public class AbilityArchives : MonoBehaviour
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Planetary_Devastation";
-        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 }

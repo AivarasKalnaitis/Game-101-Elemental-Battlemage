@@ -43,6 +43,7 @@ public class PlayerStats : MonoBehaviour
         {
             TakeDamage(50);
         }
+
     }
 
     public void TakeDamage(int damage)
