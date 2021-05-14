@@ -29,6 +29,7 @@ public class SpawnProjectiles2 : MonoBehaviour
 
             float rot = Mathf.Atan2(cursorDirection.y, cursorDirection.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rot + offset);
+            
             vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.Euler(0f, 0f, rot + offset));
             Debug.Log(rot);
             // vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position,
