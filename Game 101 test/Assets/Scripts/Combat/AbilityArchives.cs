@@ -26,15 +26,12 @@ public class AbilityArchives : MonoBehaviour
         PreparedSpells.Add("Fire_1", "Spell_Fire_Spark");
         PreparedSpells.Add("Fire_2", "Spell_Fire_Bolt");
         PreparedSpells.Add("Fire_3", "Spell_Fire_Wall");
-        PreparedSpells.Add("Water_1", "Spell_Water_Splash");
+        PreparedSpells.Add("Water_1", "Spell_Water_Bubble");
         PreparedSpells.Add("Water_2", "Spell_Ice_Spikes");
         PreparedSpells.Add("Water_3", "Spell_Water_Vortex");
         PreparedSpells.Add("Earth_1", "Spell_Rock_Splash");
         PreparedSpells.Add("Earth_2", "Spell_Rock_Toss");
         PreparedSpells.Add("Earth_3", "Spell_Planetary_Devastation");
-
-
-        //PreparedSpells < "Fire_1" > = new "Spell_Fire_Spark";
 
         VfxList = GetComponent<SpawnProjectiles>().AllSpellVFX;
     }
@@ -61,11 +58,11 @@ public class AbilityArchives : MonoBehaviour
         GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
-    private void Spell_Water_Splash()
+    private void Spell_Water_Bubble()
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Water_Splash";
-        //Instantiate(VfxList[spellKey]);
+        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
     private void Spell_Rock_Splash()
@@ -120,7 +117,6 @@ public class AbilityArchives : MonoBehaviour
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Planetary_Devastation";
-        //        GetComponent<SpawnProjectiles>().SpawnVFX(SpellKey);
-
+        GetComponent<SpawnProjectiles>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 }

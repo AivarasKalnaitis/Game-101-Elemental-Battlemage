@@ -27,12 +27,9 @@ public class PlayerStats : MonoBehaviour
         {
             Vector2 mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - gameObject.transform.position;
             RaycastHit2D hit = Physics2D.Raycast(this.gameObject.transform.position, mouseDirection, 15f, magicTargets);
-            Debug.Log("Here");
-            Debug.Log(hit);
-            Debug.Log(hit.collider.gameObject.layer.ToString());
+
             if (hit.collider != null)
             {
-                Debug.Log("????");
                 Vector2 targetPos = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
                 Vector2 playerPos = new Vector2(this.transform.position.x, this.transform.position.y);
 
@@ -71,14 +68,12 @@ public class PlayerStats : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(this.gameObject.transform.position.x + 1, this.gameObject.transform.position.y), mouseDirection);
         if (hit.collider.gameObject.layer >= 9 && hit.collider.gameObject.layer <= 11)
         {
-            Debug.Log("????");
             Vector2 targetPos = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
             Vector2 playerPos = new Vector2(this.transform.position.x, this.transform.position.y);
 
             hit.collider.gameObject.transform.position = Vector3.zero;
             this.gameObject.transform.position = targetPos;
             hit.collider.gameObject.transform.position = playerPos;
-            //hit.collider.gameObject.transform.position;
         }
     }
 }
