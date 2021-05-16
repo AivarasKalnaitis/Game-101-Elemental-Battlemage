@@ -10,7 +10,7 @@ public class ProjectileMove : MonoBehaviour
     public GameObject muzzlePrefab;
     public GameObject hitPrefab;
     public GameObject gameMaster;
-
+    private bool HitAnObject = false;
     public int pointsForSlime = 100;
 
     private void Start()
@@ -25,7 +25,7 @@ public class ProjectileMove : MonoBehaviour
     void Update()
     {
         // čia tai geras šūdas
-         var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity);
+        // var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity);
 
         if (speed != 0)
             //transform.position += transform.forward * (speed * Time.deltaTime);
@@ -34,27 +34,34 @@ public class ProjectileMove : MonoBehaviour
             Debug.Log("No speed");
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        speed = 0;
-        ContactPoint2D contact = collision.contacts[0];
-        Quaternion rot = Quaternion.FromToRotation(Vector2.up, contact.normal);
-        Vector2 pos = contact.point;
-
-        if (hitPrefab != null)
-        {
-            var hitVFX = Instantiate(hitPrefab, pos, rot);
-        }
-
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
-            gameMaster.GetComponent<Scores>().AddPoint(pointsForSlime);
+            collision.gameObject.GetComponent<EnemyStats>().TakeDamage(20);
+            // Destroy(collision.gameObject);
+            // gameMaster.GetComponent<Scores>().AddPoint(pointsForSlime);
+            if (hitPrefab != null)
+            {
+
+                var hitVFX = Instantiate(hitPrefab, gameObject.transform);
+                Debug.Log(hitVFX.transform.position);
+                Destroy(gameObject.GetComponent<ParticleSystem>());
+                Destroy(gameObject.GetComponent<CircleCollider2D>());
+
+                Destroy(gameObject, 1f);
+            }
         }
 
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject.layer == 6)
         {
-            Destroy(gameObject);
+            if (!HitAnObject)
+            {
+                var hitVFX = Instantiate(hitPrefab, gameObject.transform);
+                Destroy(gameObject.GetComponent<ParticleSystem>());
+                Destroy(gameObject.GetComponent<CircleCollider2D>());
+                Destroy(gameObject, 1f);
+            }
         }
     }
 }
