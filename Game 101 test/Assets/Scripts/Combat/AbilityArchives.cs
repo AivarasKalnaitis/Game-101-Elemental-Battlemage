@@ -100,8 +100,7 @@ public class AbilityArchives : MonoBehaviour
     {
         SpellRestingTime = 1f;
         spellTemp.text = "Spell_Fire_Wall";
-        //        GetComponent<SpawnProjectiles>().SpawnVFX(SpellKey);
-
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
 
     private void Spell_Water_Vortex()
