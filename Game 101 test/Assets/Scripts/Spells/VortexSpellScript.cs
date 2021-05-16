@@ -9,26 +9,14 @@ public class VortexSpellScript : MonoBehaviour
     List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
     [SerializeField] private float pushForce;
     private IEnumerator coroutine;
-    // Use this for initialization
+
+
     void Start()
     {
-//        ps = GetComponent<ParticleSystem>();
-        
-    }
+        ps = gameObject.GetComponent<ParticleSystem>();
+        Invoke("StopSpell", 5f);
 
-//    void OnParticleTrigger()
-//    {
-//        int numEnter = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-//
-//        for (int i = 0; i < numEnter; i++)
-//        {
-//            ParticleSystem.Particle p = enter[i];
-//            
-//            enter[i] = p;
-//        }
-//
-//        ps.SetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
-//        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -38,6 +26,26 @@ public class VortexSpellScript : MonoBehaviour
             //other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 1000 * Time.deltaTime;
             other.gameObject.GetComponent<EnemyMovement>().AffectedByVortex = true;
         }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 9)
+        {
+            other.gameObject.GetComponent<EnemyAffliction>().vortexApplicable = true;
+        }
+    }
+
+    void StopSpell()
+    {
+        var em = ps.emission;
+        em.enabled = false;
+        Destroy(gameObject, 2f);
+    }
+
+    void DestroyItself()
+    {
+
     }
 
     void OnTriggerExit2D(Collider2D other)

@@ -25,6 +25,7 @@ public class SpawnEnemies : MonoBehaviour
         SlimePrefab.GetComponent<EnemyMovement>().PlayerGO = PlayerGO;
         SlimePrefab.GetComponent<BasicEnemyAI>().PlayerGO = PlayerGO;
         SlimePrefab.GetComponent<BasicEnemyAI>().Target = PlayerGO.transform;
+//        SlimePrefab.GetComponent<EnemyStats>(). 
         Invoke("SpawnEnemySlime", spawnTimer);
     }
 }

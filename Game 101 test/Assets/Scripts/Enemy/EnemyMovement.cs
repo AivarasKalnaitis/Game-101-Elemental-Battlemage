@@ -7,9 +7,10 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private bool isGrounded;
     [SerializeField] private float checkRadius;
+    [SerializeField] private float vortexStrength;
+    public bool wantsToMove;
     public Transform groundCheck;
     public LayerMask whatIsGround;
-
     public bool AffectedByVortex;
 
     public Rigidbody2D rb;
@@ -24,6 +25,11 @@ public class EnemyMovement : MonoBehaviour
     public float fireForce = 20f;
     public bool fire;
 
+    void Awake()
+    {
+
+
+    }
     void Start()
     {
         jumpCount = jumpCountMax;
@@ -33,19 +39,20 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
 
-        rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(axis * movementSpeed, rb.velocity.y),
-            Time.deltaTime * lerpSpeed);
-        if (fire)
-        {
-            FireYourself();
-            fire = false;
-        }
+            rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(axis * movementSpeed, rb.velocity.y),
+                Time.deltaTime * lerpSpeed);
+            if (fire)
+            {
+                FireYourself();
+                fire = false;
+            }
 
-        if (jumpPress && jumpCount > 0)
-        {
+            if (jumpPress && jumpCount > 0)
+            {
 
-            PressJump();
-        }
+                PressJump();
+            }
+        
     }
 
     void FixedUpdate()
@@ -54,11 +61,17 @@ public class EnemyMovement : MonoBehaviour
         {
             AddForceToIt();
         }
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        if (isGrounded)
+
+        if (groundCheck != null)
         {
-            jumpCount = jumpCountMax;
+
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+            if (isGrounded)
+            {
+                jumpCount = jumpCountMax;
+            }
         }
+
     }
     public void HorizontalMov(float _axis)
     {
@@ -91,20 +104,14 @@ public class EnemyMovement : MonoBehaviour
         jumpPress = false;
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
+    public virtual void OnCollisionEnter2D(Collision2D other)
+    {  
+    }
 
-        if (other.collider.tag == "Player")
+        public void AddForceToIt()
         {
-            PlayerGO.GetComponent<PlayerStats>().TakeDamage(10);
-            Destroy(gameObject);
-        }   
-    }
-
-    public void AddForceToIt()
-    {
-        gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * 1000 * Time.deltaTime;
-    }
+            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.up * vortexStrength * Time.deltaTime;
+        }
 
 
 }

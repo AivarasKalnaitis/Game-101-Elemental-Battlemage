@@ -9,10 +9,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float horizontalSpeed = 10f;
     [SerializeField] private bool facingRight = true;
     [SerializeField] private int extraJumpValue = 10;
-    [SerializeField] private int extraJumps = 1;
-    [SerializeField] private float moveInput;
+    [SerializeField] public int extraJumps = 1;
+    [SerializeField] public float moveInput;
     public Node playerNode;
 
+    public bool canMove;
     public LayerMask whatIsGround;
     public Transform groundCheck;
     public GameObject Spellbook;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float checkRadius;
     [SerializeField] private bool isGrounded;
     private Animator anim;
-    private bool jumpRequest = false;
+    public bool jumpRequest = false;
 
     private Rigidbody2D rb;
     [SerializeField] private AnyStateAnimator animator;
@@ -33,28 +34,21 @@ public class PlayerMovement : MonoBehaviour
     private bool onIce = false;
     private bool inVines = false;
 
-
-    public PlayerComponents Components
-    {
-        
-        get { return components; }
-    }
-
     public AnyStateAnimator Animator
     {
         get { return animator; }
     }
+
     private void Awake()
     {
+        canMove = true;
         anim = new Animator();
         anim = gameObject.GetComponent<Animator>();
-        //  components = new PlayerComponents();
-        //animator = GetComponent<AnyStateAnimator>();
     }
 
     private void Start()
     {
-        
+        canMove = true;
         rb = GetComponent<Rigidbody2D>();
             
         extraJumps = extraJumpValue;
@@ -76,6 +70,26 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+
+        FlipOnMouse();
+        if (canMove)
+        {
+            moveInput = Input.GetAxis("Horizontal");
+        }
+        HorizontalMovement();
+        Jumping();
+    }
+
+    void Update()
+    {
+        if (canMove)
+        {
+            JumpRequest();
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Ice")
@@ -88,24 +102,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+
+
+
+    public void HorizontalMovement()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-
-        FlipOnMouse();
-        HorizontalMovement();
-        Jumping();
-    }
-
-    void Update()
-    {
-        JumpRequest();
-    }
-
-
-    private void HorizontalMovement()
-    {
-        moveInput = Input.GetAxis("Horizontal");
 
         if(onIce)
         {
@@ -154,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
                 extraJumps = extraJumpValue;
     }
 
-    private void Jumping()
+    public void Jumping()
     {
         if (jumpRequest)
         {
@@ -181,6 +182,19 @@ public class PlayerMovement : MonoBehaviour
         Spellbook.GetComponent<BookHandler>().Flip();
     }
 
+    public void InvokeAllowMovement(float t = 1f)
+    {
+        Invoke("AllowMovement", 1f);
+    }
+
+    public void AfflictMovement(int horizontalAxis, bool jumpCall, float duration)
+    {
+
+    }
+    public void AllowMovement()
+    {
+        canMove = true;
+    }
 
     
 }

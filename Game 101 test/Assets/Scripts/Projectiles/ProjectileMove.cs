@@ -9,7 +9,7 @@ public class ProjectileMove : MonoBehaviour
     public float fireRate;
     public GameObject muzzlePrefab;
     public GameObject hitPrefab;
-    public GameObject gameMaster;
+//    public GameObject gameMaster;
     private bool HitAnObject = false;
     public int pointsForSlime = 100;
 
@@ -30,22 +30,19 @@ public class ProjectileMove : MonoBehaviour
         if (speed != 0)
             //transform.position += transform.forward * (speed * Time.deltaTime);
              transform.position += transform.right * (speed * Time.deltaTime);
-        else
-            Debug.Log("No speed");
+
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.layer == 9)
         {
             collision.gameObject.GetComponent<EnemyStats>().TakeDamage(20);
-            // Destroy(collision.gameObject);
-            // gameMaster.GetComponent<Scores>().AddPoint(pointsForSlime);
             if (hitPrefab != null)
             {
 
                 var hitVFX = Instantiate(hitPrefab, gameObject.transform);
-                Debug.Log(hitVFX.transform.position);
                 Destroy(gameObject.GetComponent<ParticleSystem>());
                 Destroy(gameObject.GetComponent<CircleCollider2D>());
 

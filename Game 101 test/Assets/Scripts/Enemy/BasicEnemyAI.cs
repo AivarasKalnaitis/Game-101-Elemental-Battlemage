@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
+
 using UnityEngine;
 
 public class BasicEnemyAI : MonoBehaviour
@@ -53,12 +53,12 @@ public class BasicEnemyAI : MonoBehaviour
             Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
         }
 
-        void FindPathTimed()
-        {
-            //Invoke("FindPathTimed", 1f);
-            FindPath();
-
-        }
+//        void FindPathTimed()
+//        {
+//            //Invoke("FindPathTimed", 1f);
+//            FindPath();
+//
+//        }
 
         Node GetClosestNodeTo(Transform t)
         {

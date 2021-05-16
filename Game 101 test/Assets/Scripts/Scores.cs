@@ -6,22 +6,13 @@ using UnityEngine;
 
 public class Scores : MonoBehaviour
 {
-    private int totalScore = 0;
+
     public GameObject SoundMaster;
-    public TextMeshProUGUI pointsText;
     public GameObject EndScreen;
 
     void Awake()
     {
         Time.timeScale = 1f;
-    }
-
-
-    public void AddPoint(int points)
-    {
-        totalScore += points;
-        pointsText.text = totalScore.ToString();
-        SoundMaster.GetComponent<SoundManager>().Slime_Death.Play();
     }
 
     public GameObject FindGameMaster()
@@ -31,7 +22,7 @@ public class Scores : MonoBehaviour
 
     public void GameEnd()
     {
-        Time.timeScale = 0.02f;
+        Time.timeScale = 0f;
         EndScreen.SetActive(true);
 
     }

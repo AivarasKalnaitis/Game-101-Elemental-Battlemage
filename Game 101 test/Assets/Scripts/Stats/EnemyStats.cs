@@ -5,15 +5,20 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
 
-    public int maxHealth = 100;
-    public int currentHealth;
-
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;   
+    public string deathAction = "";
     [SerializeField] private LayerMask magicTargets;
     public HealthBar healthBar;
+    [SerializeField] private Animator anim;
+
 
     void Start()
     {
+        Debug.Log($"current health {currentHealth} max health {maxHealth}");
         currentHealth = maxHealth;
+        currentHealth = 1200;
+        anim = gameObject.GetComponent<Animator>();
         healthBar.SetMaxHealth(maxHealth);
 
     }
@@ -47,17 +52,32 @@ public class EnemyStats : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-
+        Debug.Log($"currentHealth {currentHealth} damage {damage}");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
             // Destroy itself needs animation or something like that
             GivePoints(0);
-            Destroy(gameObject);
+            //
+            DeathAction(deathAction);
         }
     }
 
+
+    private void DeathAction(string deathAction)
+    {
+        if (deathAction == "Destroy")
+        {
+            Debug.Log("poof");
+
+            Destroy(gameObject);
+        }
+        else
+        {   
+            anim.Play(deathAction);
+        }
+    }
     public void GivePoints(int points = 0)
     {
 

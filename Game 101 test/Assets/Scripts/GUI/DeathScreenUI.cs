@@ -5,17 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreenUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void LoadMainMenu()
     {
@@ -26,9 +15,8 @@ public class DeathScreenUI : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log("RER");
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Assets/Scenes/Bloodbath_1.unity");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
 
 
     }

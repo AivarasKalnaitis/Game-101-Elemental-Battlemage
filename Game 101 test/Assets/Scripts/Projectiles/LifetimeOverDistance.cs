@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LifetimeOverDistance : MonoBehaviour
 {
-    public Transform transform;
+    //public Transform transform;
 
     private ParticleSystem system;
     private ParticleSystem.Particle[] particles;
 
     void Start()
     {
-        transform = GetComponent<Transform>();
+        //      transform = GetComponent<Transform>();
         system = GetComponent<ParticleSystem>();  
     }
 
