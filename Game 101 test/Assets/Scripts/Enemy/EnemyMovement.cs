@@ -23,7 +23,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject PlayerGO;
     public float fireForce = 20f;
     public bool fire;
-    //public bool jumpPress;
+
     void Start()
     {
         jumpCount = jumpCountMax;
@@ -41,7 +41,6 @@ public class EnemyMovement : MonoBehaviour
             fire = false;
         }
 
-        //HorizontalMov(axis);
         if (jumpPress && jumpCount > 0)
         {
 
@@ -73,8 +72,6 @@ public class EnemyMovement : MonoBehaviour
 
         Vector2 playerDirection = new Vector2((PlayerGO.transform.position.x - transform.position.x) * multiplier * fireForce, (PlayerGO.transform.position.y - transform.position.y) * multiplier * fireForce * 3);
         rb.AddForce(playerDirection);
-        //rb.AddForce(Vector2.up * fireForceVertical, ForceMode2D.Impulse);
-        //rb.AddForce(playerDirection * fireForce, ForceMode2D.Impulse);
     }
 
     public void FireAway(float loadTime)
@@ -90,7 +87,6 @@ public class EnemyMovement : MonoBehaviour
     {
 
         rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
-        //rb.velocity = Vector2.up * jumpVelocity;
         jumpCount--;
         jumpPress = false;
     }

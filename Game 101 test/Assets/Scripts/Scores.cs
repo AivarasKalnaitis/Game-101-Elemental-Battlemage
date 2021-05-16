@@ -15,10 +15,8 @@ public class Scores : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
-    void Start()
-    {
-        pointsText.text = totalScore.ToString();
-    }
+
+
     public void AddPoint(int points)
     {
         totalScore += points;

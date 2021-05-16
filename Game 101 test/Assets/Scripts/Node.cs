@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Node : MonoBehaviour
 {
-    public  List<Node> connectedTo = new List<Node>();
+    public  List<Node> connectedTo;
 
     public void OnDrawGizmos()
     {
@@ -12,7 +12,7 @@ public class Node : MonoBehaviour
         Gizmos.DrawSphere(transform.position, 0.2f);
 
         foreach (var node in connectedTo)
-        {
+        {   
             Gizmos.DrawLine(transform.position, node.transform.position);
         }
     }

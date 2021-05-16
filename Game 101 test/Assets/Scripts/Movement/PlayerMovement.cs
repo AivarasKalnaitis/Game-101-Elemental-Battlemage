@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int extraJumpValue = 10;
     [SerializeField] private int extraJumps = 1;
     [SerializeField] private float moveInput;
-    public Node playerNode = new Node();
+    public Node playerNode;
 
     public LayerMask whatIsGround;
     public Transform groundCheck;

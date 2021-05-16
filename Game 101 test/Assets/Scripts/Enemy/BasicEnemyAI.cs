@@ -37,7 +37,7 @@ public class BasicEnemyAI : MonoBehaviour
             PleaseFindPath = false;
         }
         //movObject.jumpPress = true;
-        
+
         if (!GetClosestNodeTo(Target).Equals(TargetNode))
         {
             FindPath();
@@ -47,145 +47,161 @@ public class BasicEnemyAI : MonoBehaviour
         {
             MoveTowardsPath();
         }
-    }
 
-    void FindPathTimed()
-    {
-        //Invoke("FindPathTimed", 1f);
-        FindPath();
-    }
-    Node GetClosestNodeTo(Transform t)
-    {
-        Node fNode = null;
-
-        float minDistance = Mathf.Infinity;
-        foreach (var node in AllNodes)
+        if (Path.Count == 0)
         {
+            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+        }
 
-            float distance = (node.transform.position - t.position).sqrMagnitude;
-            if (distance < minDistance)
+        void FindPathTimed()
+        {
+            //Invoke("FindPathTimed", 1f);
+            FindPath();
+
+        }
+
+        Node GetClosestNodeTo(Transform t)
+        {
+            Node fNode = null;
+
+            float minDistance = Mathf.Infinity;
+            foreach (var node in AllNodes)
             {
-                float testDist = Mathf.Abs(node.transform.position.y - t.position.y);
-               //float  testDist = 0f;
-                if (testDist < 1)
+
+                float distance = (node.transform.position - t.position).sqrMagnitude;
+                if (distance < minDistance)
                 {
-                    minDistance = distance;
-                    fNode = node;
+                    float testDist = Mathf.Abs(node.transform.position.y - t.position.y);
+                    //float  testDist = 0f;
+                    if (testDist < 1)
+                    {
+                        minDistance = distance;
+                        fNode = node;
+                    }
                 }
-            }   
+            }
+
+
+            return fNode;
         }
 
-
-        return fNode;
-    }
-
-    void FindPath()
-    {
-        Path.Clear();
-
-        TargetNode = GetClosestNodeTo(Target);
-        ClosestNode = GetClosestNodeTo(transform);
-
-        if (TargetNode == null || ClosestNode == null)
+        void FindPath()
         {
-            return;
-        }
-        HashSet<Node> VisitedNodes = new HashSet<Node>();
-        Queue<Node> Q = new Queue<Node>();
-        Dictionary<Node, Node> nodeAndParent = new Dictionary<Node, Node>();
+            Path.Clear();
 
-        Q.Enqueue(ClosestNode);
+            TargetNode = GetClosestNodeTo(Target);
+            ClosestNode = GetClosestNodeTo(transform);
 
-        while (Q.Count > 0)
-        {
-            Node n = Q.Dequeue();
-            if (n.Equals(TargetNode))
+            if (TargetNode == null || ClosestNode == null)
             {
-                MakePath(nodeAndParent);
                 return;
             }
 
-            foreach (var node in n.connectedTo)
+            HashSet<Node> VisitedNodes = new HashSet<Node>();
+            Queue<Node> Q = new Queue<Node>();
+            Dictionary<Node, Node> nodeAndParent = new Dictionary<Node, Node>();
+
+            Q.Enqueue(ClosestNode);
+
+            while (Q.Count > 0)
             {
-                if (!VisitedNodes.Contains(node))
+                Node n = Q.Dequeue();
+                if (n.Equals(TargetNode))
                 {
-                    VisitedNodes.Add(node);
-                    nodeAndParent.Add(node, n);
-                    Q.Enqueue(node);
-                }
-            }
-        }
-    }
-
-
-    void MakePath(Dictionary<Node, Node> nap)
-    {
-        if (nap.Count > 0)
-        {
-            if (nap.ContainsKey(TargetNode) && nap.ContainsValue(ClosestNode))
-            {
-                Node cNode = TargetNode;
-                while (cNode != ClosestNode)
-                {
-                    Path.Add(cNode);
-                    cNode = nap[cNode];
-                    
+                    MakePath(nodeAndParent);
+                    return;
                 }
 
-                Path.Add(ClosestNode);
-                Path.Reverse();
-            }
-        }
-    }
-
-    void MoveTowardsPath()
-    {
-        movObject.HorizontalMov(0);
-        movObject.jumpPress = false;
-        var currentNode = Path.First();
-        if (Path.Count > 0)
-        {
-
-            var xMag = Mathf.Abs(currentNode.transform.position.x - transform.position.x);
-            var yMag = Mathf.Abs(currentNode.transform.position.y - transform.position.y);
-
-            if (currentNode && xMag >= minDistance && yMag <= maxDistance)
-            {
-                if (transform.position.x > currentNode.transform.position.x)
+                foreach (var node in n.connectedTo)
                 {
-                    movObject.HorizontalMov(-1);
-                }
-                if (transform.position.x < currentNode.transform.position.x)
-                {
-                    movObject.HorizontalMov(1);
-                }
-
-                if (transform.position.y < currentNode.transform.position.y && (yMag > minDistance))
-                {
-                    movObject.jumpPress = true;
-                }
-            }
-            else
-            {
-                if (Path.Count > 1)
-                {
-                    Path.Remove(Path.First());
-                }
-
-                if (Path.First() == TargetNode && Mathf.Abs(Vector2.Distance(currentNode.transform.position, transform.position)) < minDistance)
-                {
-                    if (Path.Count != 0)
+                    if (!VisitedNodes.Contains(node))
                     {
-                        movObject.FireAway(1f);
+                        VisitedNodes.Add(node);
+                        nodeAndParent.Add(node, n);
+                        Q.Enqueue(node);
+                    }
+                }
+            }
+
+            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+//        Path[0] = PlayerGO.GetComponent<PlayerMovement>().playerNode;
+        }
+
+
+        void MakePath(Dictionary<Node, Node> nap)
+        {
+            if (nap.Count > 0)
+            {
+                if (nap.ContainsKey(TargetNode) && nap.ContainsValue(ClosestNode))
+                {
+                    Node cNode = TargetNode;
+                    while (cNode != ClosestNode)
+                    {
+                        Path.Add(cNode);
+                        cNode = nap[cNode];
+
                     }
 
-                    Path.Clear();
-                   // Path = new List<Node>();
+                    Path.Add(ClosestNode);
+                    Path.Add(PlayerGO.GetComponent<Node>());
+
+                    Path.Reverse();
                 }
             }
         }
 
+        void MoveTowardsPath()
+        {
+            movObject.HorizontalMov(0);
+            movObject.jumpPress = false;
+            var currentNode = Path.First();
+            if (Path.Count > 0)
+            {
+
+                var xMag = Mathf.Abs(currentNode.transform.position.x - transform.position.x);
+                var yMag = Mathf.Abs(currentNode.transform.position.y - transform.position.y);
+
+                if (currentNode && xMag >= minDistance && yMag <= maxDistance)
+                {
+                    if (transform.position.x > currentNode.transform.position.x)
+                    {
+                        movObject.HorizontalMov(-1);
+                    }
+
+                    if (transform.position.x < currentNode.transform.position.x)
+                    {
+                        movObject.HorizontalMov(1);
+                    }
+
+                    if (transform.position.y < currentNode.transform.position.y && (yMag > minDistance))
+                    {
+                        movObject.jumpPress = true;
+                    }
+                }
+                else
+                {
+                    if (Path.Count > 1)
+                    {
+                        Path.Remove(Path.First());
+                    }
+
+                    if (Path.First() == TargetNode &&
+                        Mathf.Abs(Vector2.Distance(currentNode.transform.position, transform.position)) < minDistance)
+                    {
+                        if (Path.Count != 0)
+                        {
+                            movObject.FireAway(1f);
+                        }
+
+                        Path.Clear();
+                        // Path = new List<Node>();
+                    }
+                }
+
+            }
+
+
+        }
 
     }
-
 }
