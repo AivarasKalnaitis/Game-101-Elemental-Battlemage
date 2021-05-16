@@ -25,12 +25,11 @@ public class ProjectileMove : MonoBehaviour
     void Update()
     {
         // čia tai geras šūdas
-        // var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity);
+         var hitVFX = Instantiate(hitPrefab, transform.position, Quaternion.identity);
 
         if (speed != 0)
             //transform.position += transform.forward * (speed * Time.deltaTime);
              transform.position += transform.right * (speed * Time.deltaTime);
-
         else
             Debug.Log("No speed");
     }
