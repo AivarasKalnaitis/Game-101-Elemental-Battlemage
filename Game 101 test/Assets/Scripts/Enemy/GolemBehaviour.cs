@@ -5,9 +5,25 @@ using UnityEngine;
 
 public class GolemBehaviour : EnemyMovement
 {
+    private bool earthStage;
+    private bool waterStage;
+    private bool fireStage;
     void Update()
     {
+        if (earthStage)
+        {
 
+        }
+
+        if (waterStage)
+        {
+                
+        }
+
+        if (fireStage)
+        {
+
+        }
     }
 
     public override void OnCollisionEnter2D(Collision2D other)
@@ -22,17 +38,11 @@ public class GolemBehaviour : EnemyMovement
             {
                 direction = -1;
             }
-            Debug.Log("LELLELELE");
-            //Vector2 forceDir = new Vector2(3000f * direction, 300f);
             PlayerGO.GetComponent<PlayerMovement>().canMove = false;
             PlayerGO.GetComponent<PlayerMovement>().Invoke("AllowMovement", 1f);
             PlayerGO.GetComponent<PlayerMovement>().moveInput = direction;
             PlayerGO.GetComponent<PlayerMovement>().jumpRequest = true;
             PlayerGO.GetComponent<PlayerMovement>().extraJumps++;
-            //PlayerGO.GetComponent<PlayerMovement>().Jumping();
-            //PlayerGO.GetComponent<Rigidbody2D>().AddForce(forceDir); 
-
-
         }
     }
 
