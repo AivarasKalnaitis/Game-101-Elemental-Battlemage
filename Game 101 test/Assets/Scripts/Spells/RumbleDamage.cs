@@ -21,8 +21,11 @@ public class RumbleDamage : MonoBehaviour
 
         while (i < numCollisionEvents)
         {
-            other.GetComponent<PlayerStats>().TakeDamage(2);
-            i++;
+            if (other.layer == 3)
+            {
+                other.GetComponent<PlayerStats>().TakeDamage(2);
+                i++;
+            }
         }
     }
 }
