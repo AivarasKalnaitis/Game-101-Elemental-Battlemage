@@ -20,14 +20,17 @@ public class SuckingInwards : MonoBehaviour
 
     private void Update()
     {
-        var em = system.emission;
-
-        if (centerRockScript.stopSucking)
+        if (centerRockScript.isDestroyed != true)
         {
-            em.enabled = false;
-        }
+            var em = system.emission;
 
-        em.rateOverTime = 5 + centerRockScript.transform.localScale.x * 15;
+            if (centerRockScript.stopSucking)
+            {
+                em.enabled = false;
+            }
+
+            em.rateOverTime = 5 + centerRockScript.transform.localScale.x * 15;
+        }
     }
 
     /*
@@ -49,7 +52,6 @@ public class SuckingInwards : MonoBehaviour
     {
         int numCollisionEvents = system.GetCollisionEvents(other, collisionEvents);
 
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
         int i = 0;
 
         while(i < numCollisionEvents)

@@ -15,7 +15,6 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"current health {currentHealth} max health {maxHealth}");
         currentHealth = maxHealth;
         currentHealth = 1200;
         anim = gameObject.GetComponent<Animator>();

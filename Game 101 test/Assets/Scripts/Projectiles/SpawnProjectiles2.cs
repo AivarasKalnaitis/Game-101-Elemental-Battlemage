@@ -31,8 +31,6 @@ public class SpawnProjectiles2 : MonoBehaviour
 
             // TODO: use polymorphism or many methods to destroy objects after some time in different ways (example: water vortex velocity over lifetime starts reducing and vortex "falls down"
             //Destroy(vfx, 5f);
-            Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-          //  Debug.Log();
     }
 
     

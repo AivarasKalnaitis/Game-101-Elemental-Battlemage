@@ -14,7 +14,7 @@ public class VortexSpellScript : MonoBehaviour
     void Start()
     {
         ps = gameObject.GetComponent<ParticleSystem>();
-        Invoke("StopSpell", 5f);
+        Invoke("StopSpell", 5.5f);
 
     }
 
