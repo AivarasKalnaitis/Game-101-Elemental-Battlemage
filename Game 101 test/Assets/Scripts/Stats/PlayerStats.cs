@@ -43,6 +43,8 @@ public class PlayerStats : MonoBehaviour
         {
             TakeDamage(50);
         }
+        Vector3 cursorPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Debug.Log(cursorPoint);
 
     }
 
