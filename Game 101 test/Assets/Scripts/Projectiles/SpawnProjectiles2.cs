@@ -54,8 +54,6 @@ public class SpawnProjectiles2 : MonoBehaviour
         Vector2 spawnPoint = new Vector2(0f, firePoint.transform.position.y + 1);
         Vector2 dir = cursorPoint - firePoint.transform.position;
         RaycastHit2D wallHit = Physics2D.Raycast(firePoint.transform.position, dir, maxDistance + fromWallDistance, groundCheck);
-
-
         if (wallHit.collider != null)
         {
             spawnPoint.x = wallHit.point.x - (fromWallDistance * direction);
@@ -68,7 +66,6 @@ public class SpawnProjectiles2 : MonoBehaviour
         {
             spawnPoint.x = firePoint.transform.position.x + (maxDistance * direction); 
         }
-
         RaycastHit2D checkBottomGround = Physics2D.Raycast(spawnPoint, Vector2.down, maxDistance, groundCheck);
         spawnPoint = checkBottomGround.point;
         GameObject vfx = Instantiate(AllSpellVFX[key], spawnPoint, Quaternion.identity);
