@@ -41,8 +41,6 @@ public class SpawnProjectiles2 : MonoBehaviour
 
     public void StationaryGroundSpell(string key, float maxDistance, float fromWallDistance)
     {
-        Debug.Log("Hello");
-        Vector2 spawnPoint = new Vector2(0f, firePoint.transform.position.y);
         Vector3 cursorPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         int direction;
         if (cursorPoint.x > firePoint.transform.position.x)
@@ -53,26 +51,21 @@ public class SpawnProjectiles2 : MonoBehaviour
         {
             direction = -1;
         }
-        Debug.Log($"xFP {firePoint.transform.position.x} yFP {firePoint.transform.position.y}");
-        RaycastHit2D wallHit = Physics2D.Raycast(firePoint.transform.position, cursorPoint, maxDistance + fromWallDistance, groundCheck);
-        
+        Vector2 spawnPoint = new Vector2(0f, firePoint.transform.position.y + 1);
+        Vector2 dir = cursorPoint - firePoint.transform.position;
+        RaycastHit2D wallHit = Physics2D.Raycast(firePoint.transform.position, dir, maxDistance + fromWallDistance, groundCheck);
+
+
         if (wallHit.collider != null)
         {
-            Debug.Log("Here1");
             spawnPoint.x = wallHit.point.x - (fromWallDistance * direction);
         }
         else if(Mathf.Abs(cursorPoint.x - firePoint.transform.position.x) < maxDistance)
         {
-            Debug.Log("Here2");
-
             spawnPoint.x = cursorPoint.x;
-            Debug.Log(spawnPoint.x);
         }
         else
         {
-
-            Debug.Log("Here3");
-
             spawnPoint.x = firePoint.transform.position.x + (maxDistance * direction); 
         }
 
