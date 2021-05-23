@@ -39,10 +39,7 @@ public class PlayerStats : MonoBehaviour
                 //hit.collider.gameObject.transform.position;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(50);
-        }
+
         Vector3 cursorPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //Debug.Log(cursorPoint);
 

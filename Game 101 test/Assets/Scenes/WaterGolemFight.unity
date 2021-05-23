@@ -14232,7 +14232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 190950032}
   m_Layer: 0
-  m_Name: IceVortex (2)
+  m_Name: IceVortex_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24260,7 +24260,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479595305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.410004, y: -2.2100003, z: 0}
+  m_LocalPosition: {x: -11.410004, y: -1.46, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 694821077}
@@ -25613,15 +25613,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541180445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 14.8539715, y: 2.9913068, z: -17.303213}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2091128523}
   - {fileID: 1883530487}
   - {fileID: 190950032}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 1537728008}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541499307
 GameObject:
@@ -26164,6 +26164,8 @@ GameObject:
   - component: {fileID: 588993991}
   - component: {fileID: 588993990}
   - component: {fileID: 588993989}
+  - component: {fileID: 588993997}
+  - component: {fileID: 588993998}
   m_Layer: 9
   m_Name: PBR_Golem
   m_TagString: Untagged
@@ -26238,6 +26240,13 @@ MonoBehaviour:
   PlayerGO: {fileID: 4500899052995748422}
   fireForce: 20
   fire: 0
+  smallGolemPrefab: {fileID: 0}
+  boulderPrefab: {fileID: 0}
+  snowballPrefab: {fileID: 3886310392745712671, guid: f90f949cbc94e17419c1aa8d8828a8f5, type: 3}
+  rustledGroundGO: {fileID: 0}
+  iceSpikesLeft: {fileID: 1471861737510546448}
+  iceSpikesRight: {fileID: 966919927}
+  animator: {fileID: 588993998}
 --- !u!114 &588993991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26256,7 +26265,7 @@ MonoBehaviour:
   magicTargets:
     serializedVersion: 2
     m_Bits: 0
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 697566069}
   anim: {fileID: 0}
 --- !u!61 &588993992
 BoxCollider2D:
@@ -26348,7 +26357,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588993988}
   m_LocalRotation: {x: -0, y: -0.86602545, z: -0, w: 0.49999994}
-  m_LocalPosition: {x: 29.14, y: 5, z: -4}
+  m_LocalPosition: {x: 33.92, y: -4.3, z: 0.68}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 504888278}
@@ -26357,8 +26366,36 @@ Transform:
   - {fileID: 1867380201}
   - {fileID: 2027966358}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -120, z: 0}
+--- !u!114 &588993997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588993988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6716cac96ef0564da39752dae14990e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTimer: 0
+  spawnTimerMax: 1
+  bubbleToSpawn: {fileID: 7729316064720635078, guid: 979807969bb771043a23b86fcc3c1059, type: 3}
+--- !u!114 &588993998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588993988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67236cad94cc5524f873b630ddac8f33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 588993995}
 --- !u!1 &599936872
 GameObject:
   m_ObjectHideFlags: 0
@@ -27470,7 +27507,7 @@ Transform:
   - {fileID: 1106849831}
   - {fileID: 856506291}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &645990124
 GameObject:
@@ -36292,7 +36329,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860804455}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.267265, y: -2.4703274, z: 0}
+  m_LocalPosition: {x: -11.18, y: -2.67, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 694821077}
@@ -36335,8 +36372,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 971139439
-  m_SortingLayer: 1
+  m_SortingLayerID: -843112415
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300086, guid: 0bee0883b7667c54b8c9289d3c28c61d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -38440,7 +38477,7 @@ GameObject:
   - component: {fileID: 966919929}
   - component: {fileID: 966919928}
   m_Layer: 10
-  m_Name: Spell_Ice_Spikes (1)
+  m_Name: Spell_Ice_Spikes _Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38490,14 +38527,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966919927}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.51, y: -3.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1187071828}
   - {fileID: 29316699}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1537728008}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969379324
 GameObject:
@@ -46174,8 +46211,8 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -46290,7 +46327,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -46342,14 +46379,14 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.01
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
-    maxCollisionShapes: 256
+      m_Bits: 8
+    maxCollisionShapes: 2
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -68213,6 +68250,9 @@ Transform:
   - {fileID: 839404555}
   - {fileID: 1224905722}
   - {fileID: 1998906085}
+  - {fileID: 1471861737510546451}
+  - {fileID: 966919929}
+  - {fileID: 541180446}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72084,36 +72124,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1753271715
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1753271716}
-  m_Layer: 0
-  m_Name: Ice_Spikes_Ground
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1753271716
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753271715}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.8539715, y: 2.9913068, z: -17.303213}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758602083
 GameObject:
   m_ObjectHideFlags: 0
@@ -78632,7 +78642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1883530487}
   m_Layer: 0
-  m_Name: IceVortex (1)
+  m_Name: IceVortex_Middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81368,7 +81378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031277146}
   m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.19, y: -1.31, z: -0.55}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 588993996}
@@ -82485,7 +82495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2091128523}
   m_Layer: 0
-  m_Name: IceVortex
+  m_Name: IceVortex_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84037,7 +84047,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 35, y: 5, z: 1}
+    m_Scale: {x: 35, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -88302,7 +88312,7 @@ GameObject:
   - component: {fileID: 1471861737510546451}
   - component: {fileID: 6539360696094457906}
   m_Layer: 10
-  m_Name: Spell_Ice_Spikes
+  m_Name: Spell_Ice_Spikes_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88315,14 +88325,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471861737510546448}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -30.35, y: -4.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1471861737820701020}
   - {fileID: 1471861737198226990}
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1537728008}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1471861737820701020
 Transform:
@@ -92021,8 +92031,8 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -92137,7 +92147,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -92189,26 +92199,27 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.01
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
-    maxCollisionShapes: 256
+      m_Bits: 8
+    maxCollisionShapes: 2
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
     enabled: 0
     serializedVersion: 2
-    inside: 1
+    inside: 0
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     colliderQueryMode: 0
-    radiusScale: 1
-    primitives: []
+    radiusScale: 0.01
+    primitives:
+    - {fileID: 4500899052995748441}
   SubModule:
     serializedVersion: 2
     enabled: 0
@@ -93292,6 +93303,10 @@ PrefabInstance:
     - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
       propertyPath: m_LocalPosition.x

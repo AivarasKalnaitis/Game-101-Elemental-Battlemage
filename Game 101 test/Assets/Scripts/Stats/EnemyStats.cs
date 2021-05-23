@@ -41,12 +41,6 @@ public class EnemyStats : MonoBehaviour
                 //hit.collider.gameObject.transform.position;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(50);
-        }
-
     }
 
     public void TakeDamage(int damage)
