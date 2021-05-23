@@ -6,6 +6,8 @@ using UnityEngine;
 public class GolemBehaviour : EnemyMovement
 {
     public GameObject smallGolemPrefab;
+    public GameObject boulderPrefab;
+
     public GameObject rustledGroundGO;
 
     private bool earthStage = true;
@@ -99,13 +101,14 @@ public class GolemBehaviour : EnemyMovement
         }
 
         if (Input.GetKeyDown(KeyCode.F3))
-            animator.TryPlayAnimation("Attack01");
+        {
+            animator.TryPlayAnimation("Attack01"); // "grunts, swish"
+            Invoke("Attack_Rock_Toss", 1.5f);
+        }
     }
 
     void Attack_Summon_Golems()
     {
-        
-
         Vector2 spawnPos = new Vector2(Random.Range(transform.position.x, transform.position.x - 17), transform.position.y);
         Instantiate(smallGolemPrefab, spawnPos, Quaternion.identity);
 
@@ -117,5 +120,15 @@ public class GolemBehaviour : EnemyMovement
     void Attack_Rumble_Ground()
     {
         rustledGroundGO.SetActive(true);
+    }
+
+    void Attack_Rock_Toss()
+    {
+        Vector2 spawnPos = new Vector2(1, 1);
+        Vector2 playerPos = new Vector2(PlayerGO.transform.position.x, PlayerGO.transform.position.y);
+
+        var boulder = Instantiate(boulderPrefab, spawnPos, Quaternion.identity);
+
+        boulder.transform.position = Vector2.MoveTowards(spawnPos, playerPos, 4f * Time.deltaTime);
     }
 }
