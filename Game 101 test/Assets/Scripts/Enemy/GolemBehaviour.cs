@@ -99,7 +99,7 @@ public class GolemBehaviour : EnemyMovement
         }
 
         if (Input.GetKeyDown(KeyCode.F3))
-            animator.TryPlayAnimation("GetHit");
+            animator.TryPlayAnimation("Attack01");
     }
 
     void Attack_Summon_Golems()
