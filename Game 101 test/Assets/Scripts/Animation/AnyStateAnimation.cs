@@ -17,4 +17,9 @@ public class AnyStateAnimation
         AnimationRig = rig;
         Name = name;
     }
+
+    public AnyStateAnimation(string name)
+    {
+        Name = name;
+    }
 }

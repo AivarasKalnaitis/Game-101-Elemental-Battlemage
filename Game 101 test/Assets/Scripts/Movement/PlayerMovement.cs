@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         FlipOnMouse();
+
         if (canMove)
         {
             moveInput = Input.GetAxis("Horizontal");
@@ -101,9 +102,6 @@ public class PlayerMovement : MonoBehaviour
             inVines = true;
         }
     }
-
-
-
 
     public void HorizontalMovement()
     {

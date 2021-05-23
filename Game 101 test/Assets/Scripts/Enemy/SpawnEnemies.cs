@@ -7,6 +7,7 @@ public class SpawnEnemies : MonoBehaviour
     public GameObject SlimePrefab;
     public float spawnTimer = 3f;
     public GameObject PlayerGO;
+
     void Start()
     {
         Invoke("SpawnEnemySlime", spawnTimer);

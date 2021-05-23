@@ -5,19 +5,56 @@ using UnityEngine;
 
 public class GolemBehaviour : EnemyMovement
 {
-    private bool earthStage;
+    public GameObject smallGolemPrefab;
+    public GameObject rustledGroundGO;
+
+    private bool earthStage = true;
     private bool waterStage;
     private bool fireStage;
+
+    private Animator anim;
+    [SerializeField] private GolemAnyStateAnimator animator;
+
+    public GolemAnyStateAnimator Animator
+    {
+        get { return animator; }
+    }
+
+    private void Awake()
+    {
+        rustledGroundGO.SetActive(false);
+
+        anim = new Animator();
+        anim = gameObject.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        AnyStateAnimation[] animations = new AnyStateAnimation[]
+        {
+            new AnyStateAnimation("Idle"),
+            new AnyStateAnimation("Attack01"),
+            new AnyStateAnimation("Attack02"),
+            new AnyStateAnimation("GetHit"),
+            new AnyStateAnimation("Victory"),
+            new AnyStateAnimation("Walk"),
+            new AnyStateAnimation("Die"),
+        };
+
+        animator.AddAnimations(animations);
+    }
+
+
     void Update()
     {
         if (earthStage)
         {
-
+            EarthStageAttacks();
         }
 
         if (waterStage)
         {
-                
+
         }
 
         if (fireStage)
@@ -46,6 +83,39 @@ public class GolemBehaviour : EnemyMovement
         }
     }
 
+    public void EarthStageAttacks()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            animator.TryPlayAnimation("Attack02"); // "go minions"
+            Invoke("Attack_Summon_Golems", 1.5f);
 
+        }
 
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            animator.TryPlayAnimation("Victory"); // "roars, ground rumbes"
+            Invoke("Attack_Rumble_Ground", 2.5f);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+            animator.TryPlayAnimation("GetHit");
+    }
+
+    void Attack_Summon_Golems()
+    {
+        
+
+        Vector2 spawnPos = new Vector2(Random.Range(transform.position.x, transform.position.x - 17), transform.position.y);
+        Instantiate(smallGolemPrefab, spawnPos, Quaternion.identity);
+
+        smallGolemPrefab.GetComponent<EnemyMovement>().PlayerGO = PlayerGO;
+        smallGolemPrefab.GetComponent<BasicEnemyAI>().PlayerGO = PlayerGO;
+        smallGolemPrefab.GetComponent<BasicEnemyAI>().Target = PlayerGO.transform;
+    }
+
+    void Attack_Rumble_Ground()
+    {
+        rustledGroundGO.SetActive(true);
+    }
 }
