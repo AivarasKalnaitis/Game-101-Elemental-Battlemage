@@ -50,7 +50,7 @@ public class BasicEnemyAI : MonoBehaviour
 
         if (Path.Count == 0)
         {
-            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+            Path.Add(PlayerGO.transform.GetComponent<Node>());
         }
 
 //        void FindPathTimed()
@@ -123,8 +123,8 @@ public class BasicEnemyAI : MonoBehaviour
                 }
             }
 
-            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
-//        Path[0] = PlayerGO.GetComponent<PlayerMovement>().playerNode;
+            //Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+        Path[0] = PlayerGO.GetComponent<PlayerMovement>().playerNode;
         }
 
 
@@ -190,7 +190,7 @@ public class BasicEnemyAI : MonoBehaviour
                     {
                         if (Path.Count != 0)
                         {
-                            movObject.FireAway(1f);
+                            movObject.FireAway();
                         }
 
                         Path.Clear();
@@ -203,5 +203,14 @@ public class BasicEnemyAI : MonoBehaviour
 
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 3)
+        {
+            Destroy(gameObject);
+            collision.gameObject.GetComponent<PlayerStats>().TakeDamage(10);
+        }
     }
 }
