@@ -13,7 +13,7 @@ public class Node : MonoBehaviour
 
         foreach (var node in connectedTo)
         {   
-            Gizmos.DrawLine(transform.position, node.transform.position);
+            //Gizmos.DrawLine(transform.position, node.transform.position);
         }
     }
 }

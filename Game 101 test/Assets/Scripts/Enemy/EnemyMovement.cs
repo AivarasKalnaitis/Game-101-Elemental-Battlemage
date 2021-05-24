@@ -38,9 +38,9 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-
             rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(axis * movementSpeed, rb.velocity.y),
                 Time.deltaTime * lerpSpeed);
+
             if (fire)
             {
                 FireYourself();
@@ -51,8 +51,7 @@ public class EnemyMovement : MonoBehaviour
             {
 
                 PressJump();
-            }
-        
+            } 
     }
 
     void FixedUpdate()
@@ -87,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
         rb.AddForce(playerDirection);
     }
 
-    public void FireAway(float loadTime)
+    public void FireAway()
     {
         Invoke("FireTruth", 1f);
     }
