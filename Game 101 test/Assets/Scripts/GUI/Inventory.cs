@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        allSlots = 26;
+        allSlots = 25;
 
         Slot = new GameObject[allSlots];
         for (int i = 0; i < allSlots; i++)
