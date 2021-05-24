@@ -29,7 +29,7 @@ public class SuckingInwards : MonoBehaviour
                 em.enabled = false;
             }
 
-            em.rateOverTime = 5 + centerRockScript.transform.localScale.x * 15;
+            em.rateOverTime = 10 + centerRockScript.transform.localScale.x * 15;
         }
     }
 

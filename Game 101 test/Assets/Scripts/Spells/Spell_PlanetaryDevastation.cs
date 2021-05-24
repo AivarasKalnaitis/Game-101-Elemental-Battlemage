@@ -27,7 +27,7 @@ public class Spell_PlanetaryDevastation : MonoBehaviour
     {
         suckedRocks = suckedParticlesScript.destroyedCount;
 
-        if (transform.localScale.x < 1)
+        if (transform.localScale.x < 2)
         {
             if(suckedRocks > 0)
             {

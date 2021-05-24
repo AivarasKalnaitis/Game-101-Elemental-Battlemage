@@ -15,16 +15,19 @@ public class RumbleDamage : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
-
-        int i = 0;
-
-        while (i < numCollisionEvents)
+        if (other.layer == 3)
         {
-            if (other.layer == 3)
+            int numCollisionEvents = ps.GetCollisionEvents(other, collisionEvents);
+
+            int i = 0;
+
+            while (i < numCollisionEvents)
             {
-                other.GetComponent<PlayerStats>().TakeDamage(2);
-                i++;
+                if (other.layer == 3)
+                {
+                    other.GetComponent<PlayerStats>().TakeDamage(2);
+                    i++;
+                }
             }
         }
     }

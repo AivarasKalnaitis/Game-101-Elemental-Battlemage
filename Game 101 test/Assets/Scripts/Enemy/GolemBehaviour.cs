@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GolemBehaviour : EnemyMovement
 {
@@ -16,10 +17,6 @@ public class GolemBehaviour : EnemyMovement
     public GameObject fireBurstPS;
     public GameObject lavaGrounds;
 
-    private bool earthStage = false;
-    private bool waterStage = false;
-    private bool fireStage = true;
-
     private Animator anim;
     [SerializeField] private GolemAnyStateAnimator animator;
 
@@ -30,18 +27,18 @@ public class GolemBehaviour : EnemyMovement
 
     private void Awake()
     {
-        if(earthStage)
+        if(SceneManager.GetActiveScene().buildIndex == 2)
         {
             rustledGroundGO.SetActive(false);
         }
 
-        if(waterStage)
+        if(SceneManager.GetActiveScene().buildIndex == 3)
         {
             iceSpikesLeft.SetActive(false);
             iceSpikesRight.SetActive(false);
         }
 
-        if(fireStage)
+        if(SceneManager.GetActiveScene().buildIndex == 4)
         {
             fireBurstPS.SetActive(false);
         }
@@ -69,17 +66,17 @@ public class GolemBehaviour : EnemyMovement
 
     void Update()
     {
-        if (earthStage)
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
             EarthStageAttacks();
         }
 
-        if (waterStage)
+        if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             WaterStageAttacks();
         }
 
-        if (fireStage)
+        if (SceneManager.GetActiveScene().buildIndex == 4)
         {
             FireStageAttacks();
         }
