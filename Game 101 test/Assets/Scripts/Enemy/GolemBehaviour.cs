@@ -17,6 +17,8 @@ public class GolemBehaviour : EnemyMovement
     public GameObject fireBurstPS;
     public GameObject lavaGrounds;
 
+    public GameObject GameMaster;
+
     private Animator anim;
     [SerializeField] private GolemAnyStateAnimator animator;
 
