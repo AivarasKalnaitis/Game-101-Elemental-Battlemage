@@ -7,7 +7,7 @@ public class E_Book : MonoBehaviour
     public GameObject door;
     public GameObject PlayerGO;
     private bool enter;
-
+    public GameObject inventoryManager;
     private SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
@@ -20,11 +20,16 @@ public class E_Book : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             if (door.GetComponent<E_Open>().insideHouse)
             {
-                PlayerGO.GetComponent<PlayerStats>().currentHealth = PlayerGO.GetComponent<PlayerStats>().maxHealth;
+                if (enter)
+                {
+                    PlayerGO.GetComponent<PlayerStats>().currentHealth = PlayerGO.GetComponent<PlayerStats>().maxHealth;
+                    inventoryManager.GetComponent<Inventory>().inventoryEnabled =
+                        !inventoryManager.GetComponent<Inventory>().inventoryEnabled;
+                }
             }
         }
     }

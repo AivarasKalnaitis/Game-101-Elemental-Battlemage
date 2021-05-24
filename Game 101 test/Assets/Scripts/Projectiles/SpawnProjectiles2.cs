@@ -28,18 +28,23 @@ public class SpawnProjectiles2 : MonoBehaviour
 
         //vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.Euler(0f, 0f, rot + offset));
         // Spell_Fire_Wall(key, "kew");
-        StationaryGroundSpell(key, 10f, 4f);
+//        StationaryGroundSpell(key, 10f, 4f);
         // TODO: use polymorphism or many methods to destroy objects after some time in different ways (example: water vortex velocity over lifetime starts reducing and vortex "falls down"
         //Destroy(vfx, 5f);
     }
 
-    
-    private void Spawn(string key, string summoning)
+    public void SpawnVFX(string key)
     {
+        GameObject vfx;
+        Vector3 cursorDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.transform.position;
 
+        float rot = Mathf.Atan2(cursorDirection.y, cursorDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot + offset);
+
+        vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.Euler(0f, 0f, rot + offset));
     }
 
-    public void StationaryGroundSpell(string key, float maxDistance, float fromWallDistance)
+    public void SpawnVFX(string key, float maxDistance, float fromWallDistance)
     {
         Vector3 cursorPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         int direction;

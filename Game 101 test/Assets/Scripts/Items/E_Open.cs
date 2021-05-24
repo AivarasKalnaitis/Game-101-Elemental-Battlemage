@@ -4,9 +4,6 @@ public class E_Open : MonoBehaviour
 {
     public GameObject HouseInterior;
     public GameObject HouseExterior;
-
-    public GameObject Bed_E;
-    public GameObject Book_E;
     public bool insideHouse;
 
     private bool enter;
@@ -21,7 +18,7 @@ public class E_Open : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             if (enter)
             {

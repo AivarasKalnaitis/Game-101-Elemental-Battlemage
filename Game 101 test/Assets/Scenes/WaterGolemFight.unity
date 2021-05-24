@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 1180965}
   - component: {fileID: 1180964}
   - component: {fileID: 1180963}
+  - component: {fileID: 1180967}
   m_Layer: 10
   m_Name: Spell_Water_Vortex
   m_TagString: Untagged
@@ -5027,6 +5028,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1180967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b98cf1eaba3fa4faaeedfaa2309aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2599073
 GameObject:
   m_ObjectHideFlags: 0
@@ -48217,7 +48230,7 @@ MonoBehaviour:
   firePoint: {fileID: 662779943}
   groundCheck:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   offset: 0
 --- !u!1 &1227960422
 GameObject:
@@ -73397,6 +73410,7 @@ GameObject:
   - component: {fileID: 1841532091}
   - component: {fileID: 1841532090}
   - component: {fileID: 1841532089}
+  - component: {fileID: 1841532093}
   m_Layer: 10
   m_Name: Spell_Water_Vortex
   m_TagString: Untagged
@@ -78288,6 +78302,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1841532093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841532087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b98cf1eaba3fa4faaeedfaa2309aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1849961167
 GameObject:
   m_ObjectHideFlags: 0
@@ -93927,6 +93953,7 @@ GameObject:
   - component: {fileID: 7878067573809770408}
   - component: {fileID: 1620669139101430313}
   - component: {fileID: 9069847641566446790}
+  - component: {fileID: 7878067573809770411}
   m_Layer: 10
   m_Name: Spell_Water_Vortex
   m_TagString: Untagged
@@ -93934,6 +93961,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7878067573809770411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7878067573809770410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b98cf1eaba3fa4faaeedfaa2309aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &7878067573809770415
 ParticleSystem:
   m_ObjectHideFlags: 0

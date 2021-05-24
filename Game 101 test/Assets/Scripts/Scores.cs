@@ -27,7 +27,6 @@ public class Scores : MonoBehaviour
 
     }
 
-    public void DontDestroyOnLoad(){}
     
     
 }
