@@ -5,16 +5,52 @@ using UnityEngine;
 public class FireWallDamageToGolem : MonoBehaviour
 {
     public EnemyStats enemyStats;
-    public ParticleSystem ps;
-    List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
+    private List<float> DealDamage;
+    private float damageIntervalTime;
+    private float damageIntervalTimeMax;
+    private bool dealDamage;
+    void Start()
+    {
+//        dealDamage = false;
+//        damageIntervalTimeMax = 0.25f;
+//        damageIntervalTime = damageIntervalTimeMax;
+        Destroy(gameObject, 3f);
 
-    private void OnParticleTrigger()
+
+    }
+
+    void Update()
+    {
+//        damageIntervalTime -= Time.deltaTime;
+
+    }
+//
+//    void DealDamages(Collider2D other, float time)
+//    {
+//        if (dealDamage && damageIntervalTime < 0)
+//        {
+//            other.gameObject.GetComponent<EnemyStats>().TakeDamage(5);
+//            DealDamages(other, time);
+//            damageIntervalTime = damageIntervalTimeMax;
+//        }
+//    }
+
+
+
+    void OnTriggerEnter2D(Collider2D other)
     {
 
-        // get the particles which matched the trigger conditions this frame
-        int numEnter = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Inside, enter);
-        Debug.Log(numEnter);
-
-        enemyStats.TakeDamage(1);
+        if (other.gameObject.layer == 9)
+        {
+//            dealDamage = true;
+//            DealDamages(other, 0.25f);
+            other.gameObject.GetComponent<EnemyStats>().TakeDamage(20);
+        }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        dealDamage = false;
+    }
+    
 }

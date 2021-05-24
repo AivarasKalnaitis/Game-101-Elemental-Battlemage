@@ -119,4 +119,11 @@ public class AbilityArchives : MonoBehaviour
         spellTemp.text = "Spell_Planetary_Devastation";
         GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey]);
     }
+
+    private void Spell_Lava_Ground()
+    {
+        SpellRestingTime = 1f;
+        spellTemp.text = "Spell_Lava_Ground";
+        GetComponent<SpawnProjectiles2>().SpawnVFX(PreparedSpells[SpellKey], 10f, 2f);  
+    }
 }

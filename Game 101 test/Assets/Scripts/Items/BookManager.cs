@@ -57,6 +57,8 @@ public class BookManager : MonoBehaviour
     {
         FireSpellbook3.texture = fireLava;
         description3.text = "Does fire lava things";
+        SpellArchives.GetComponent<AbilityArchives>().PreparedSpells["Fire_3"] = "Spell_Lava_Ground";
+        SpellArchives.GetComponent<SpawnProjectiles2>().TakeDictionary();
     }
 
     private void DisableEveryPage()
@@ -70,5 +72,10 @@ public class BookManager : MonoBehaviour
     {
         FireSpellbook3.texture = fireWall;
         description3.text = "Does fire wall things";
+        SpellArchives.GetComponent<AbilityArchives>().PreparedSpells["Fire_3"] = "Spell_Fire_Wall";
+
+        SpellArchives.GetComponent<SpawnProjectiles2>().TakeDictionary();   
+
+
     }
 }

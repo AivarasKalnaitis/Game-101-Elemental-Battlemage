@@ -13,8 +13,12 @@ public class SpawnProjectiles2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AllSpellVFX = GetVfxDictionary(vfx);
+        TakeDictionary();
+    }
 
+    public void TakeDictionary()
+    {
+        AllSpellVFX = GetVfxDictionary(vfx);
     }
 
 
@@ -43,6 +47,7 @@ public class SpawnProjectiles2 : MonoBehaviour
 
         vfx = Instantiate(AllSpellVFX[key], firePoint.transform.position, Quaternion.Euler(0f, 0f, rot + offset));
     }
+
 
     public void SpawnVFX(string key, float maxDistance, float fromWallDistance)
     {

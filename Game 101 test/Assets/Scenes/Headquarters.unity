@@ -2737,7 +2737,7 @@ MonoBehaviour:
   - {fileID: 1395725703}
   - {fileID: 698415570}
   description3: {fileID: 795722384}
-  SpellArchives: {fileID: 0}
+  SpellArchives: {fileID: 1224905720}
 --- !u!1 &156609841
 GameObject:
   m_ObjectHideFlags: 0
@@ -32305,6 +32305,7 @@ MonoBehaviour:
   - {fileID: 166709511839291424, guid: 0481021296c25574b8b6a6e3f7d588e3, type: 3}
   - {fileID: 9025284964791668071, guid: 159a926e86c27484ba1c9284cd09b0f7, type: 3}
   - {fileID: 4581291096312092030, guid: 74b03f6a3add54948a5e0471f7388221, type: 3}
+  - {fileID: 4735202853320462115, guid: 3b2311e02fa0a5a49982c1f825c93b74, type: 3}
   firePoint: {fileID: 662779943}
   groundCheck:
     serializedVersion: 2
