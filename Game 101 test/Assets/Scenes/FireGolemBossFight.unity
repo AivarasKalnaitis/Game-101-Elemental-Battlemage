@@ -333,12 +333,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1200
   currentHealth: 0
-  deathAction: Destroy
   magicTargets:
     serializedVersion: 2
     m_Bits: 0
   healthBar: {fileID: 697566069}
   anim: {fileID: 0}
+  devastationPrefab: {fileID: 0}
+  volume: {fileID: 0}
+  golemBehaviour: {fileID: 0}
+  canvasGroup: {fileID: 0}
 --- !u!61 &16825121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -434,7 +437,6 @@ Transform:
   m_Children:
   - {fileID: 239706284}
   - {fileID: 1194272951}
-  - {fileID: 2059418496}
   - {fileID: 188033664}
   - {fileID: 110687056}
   m_Father: {fileID: 0}
@@ -6794,7 +6796,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.50000006}
   m_Children: []
   m_Father: {fileID: 16825125}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 2.624, y: -90, z: 90}
 --- !u!1 &127980209
 GameObject:
@@ -7288,7 +7290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 16825125}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!73398921 &188033665
 VFXRenderer:
@@ -15659,7 +15661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 5.42, z: -10}
+  m_LocalPosition: {x: -14.2, y: -2.0883732, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17243,7 +17245,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655138368}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 5.42, z: -10}
+  m_LocalPosition: {x: -14.2, y: -2.0883732, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 197363810}
@@ -27092,7 +27094,7 @@ SkinnedMeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 85538242e70e0c449a1cbacaf40ee6e3, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 5969203b975dce84ebd2629dc24f0504, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41346,36 +41348,6 @@ Transform:
   m_Father: {fileID: 1001451439}
   m_RootOrder: 91
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2059418495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2059418496}
-  m_Layer: 0
-  m_Name: PS_Golem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2059418496
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059418495}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 16825125}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2067561663
 GameObject:
   m_ObjectHideFlags: 0
@@ -42527,11 +42499,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6
+      value: -14.2
       objectReference: {fileID: 0}
     - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7383733
+      value: -3.77
       objectReference: {fileID: 0}
     - target: {fileID: 2691694408595006028, guid: 0a03cc6fb7f82d141908cccb61034483, type: 3}
       propertyPath: m_LocalPosition.z

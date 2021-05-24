@@ -1,25 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class EnemyStats : MonoBehaviour
 {
 
     [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;   
-    public string deathAction = "";
+    [SerializeField] private int currentHealth;
     [SerializeField] private LayerMask magicTargets;
     public HealthBar healthBar;
-    [SerializeField] private Animator anim;
-
+    public GolemAnyStateAnimator anim;
+    public GameObject devastationPrefab;
+    public Volume volume;
+    bool startLoadingWater = false;
+    bool startLoadingFire = false;
+    float DeathTime;
+    public GolemBehaviour golemBehaviour;
+    public CanvasGroup canvasGroup;
 
     void Start()
     {
         currentHealth = maxHealth;
         currentHealth = 1200;
-        anim = gameObject.GetComponent<Animator>();
         healthBar.SetMaxHealth(maxHealth);
-
+        DeathTime = 0f;
     }
 
     void Update()
@@ -41,39 +47,69 @@ public class EnemyStats : MonoBehaviour
                 //hit.collider.gameObject.transform.position;
             }
         }
+
+        if (startLoadingWater)
+        {
+            DeathTime += Time.deltaTime;
+            volume.weight = DeathTime / 1.2f;
+            Invoke("LoadWaterStageScene", 8f);
+        }
+        else if(startLoadingFire)
+        {
+            DeathTime += Time.deltaTime;
+            canvasGroup.alpha = DeathTime / 2f;
+            volume.weight = DeathTime / 3f;
+            Invoke("LoadFireStageScene", 4f);
+        }
     }
 
     public void TakeDamage(int damage)
     {
         Debug.Log($"currentHealth {currentHealth} damage {damage}");
+
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            // Destroy itself needs animation or something like that
-            GivePoints(0);
-            //
-            DeathAction(deathAction);
+            DeathAction();
         }
     }
 
 
-    private void DeathAction(string deathAction)
+    private void DeathAction()
     {
-        if (deathAction == "Destroy")
+        anim.TryPlayAnimation("GetHit");
+
+        if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            Debug.Log("poof");
+            Vector2 pos = new Vector2(-4, -2);
+            Instantiate(devastationPrefab, pos, Quaternion.identity);
+            Invoke("SetStartLoadingWater", 7f);
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            Invoke("SetStartLoadingFire", 3f);
+        }
 
-            Destroy(gameObject);
-        }
-        else
-        {   
-            anim.Play(deathAction);
-        }
     }
-    public void GivePoints(int points = 0)
+
+    void LoadWaterStageScene()
     {
-
+        SceneManager.LoadScene(3);
     }
 
+    void LoadFireStageScene()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    void SetStartLoadingWater()
+    {
+        startLoadingWater = true;
+    }
+
+    void SetStartLoadingFire()
+    {
+        startLoadingFire = true;
+    }
 }
