@@ -4907,7 +4907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabc6e2073d729940aeebde8b67c9254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transform: {fileID: 1850400908626553827}
 --- !u!114 &1850400908626553831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4924,5 +4923,4 @@ MonoBehaviour:
   fireRate: 1
   muzzlePrefab: {fileID: 0}
   hitPrefab: {fileID: 0}
-  gameMaster: {fileID: 0}
   pointsForSlime: 100

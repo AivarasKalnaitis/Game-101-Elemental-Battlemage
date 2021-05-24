@@ -207,6 +207,8 @@ public class GolemBehaviour : EnemyMovement
         var snowball = Instantiate(snowballPrefab, spawnPos, Quaternion.identity);
 
         snowball.transform.position = Vector2.MoveTowards(spawnPos, playerPos, 4f * Time.deltaTime);
+
+        snowball.GetComponent<Rigidbody2D>().AddForce(transform.forward * 1000f);
     }
 
     void FireStageAttacks()
