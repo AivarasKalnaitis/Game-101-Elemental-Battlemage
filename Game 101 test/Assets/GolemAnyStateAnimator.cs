@@ -34,6 +34,7 @@ public class GolemAnyStateAnimator : MonoBehaviour
             {
                 animator.SetTrigger(newAnimation);
             }
+
             else if (currentAnimation != newAnimation)
             {
                 animator.ResetTrigger(currentAnimation);

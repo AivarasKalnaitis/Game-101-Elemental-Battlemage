@@ -8,7 +8,7 @@ public class EnemyStats : MonoBehaviour
 {
 
     [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth;
     [SerializeField] private LayerMask magicTargets;
     public HealthBar healthBar;
     public GolemAnyStateAnimator anim;
@@ -78,7 +78,7 @@ public class EnemyStats : MonoBehaviour
 
     private void DeathAction()
     {
-        anim.TryPlayAnimation("GetHit");
+        anim.TryPlayAnimation("Die");
 
         if (SceneManager.GetActiveScene().buildIndex == 2)
         {
