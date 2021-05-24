@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour
 
     public void LoadLevelOne()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(1);
     }
 
     public void ExitGame()
@@ -46,7 +46,7 @@ public class MenuScript : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Assets/Scenes/Bloodbath_1.unity");
+        SceneManager.LoadScene(1);
 
     }
 }
