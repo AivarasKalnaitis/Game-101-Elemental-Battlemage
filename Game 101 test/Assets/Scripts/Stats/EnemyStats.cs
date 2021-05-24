@@ -20,6 +20,8 @@ public class EnemyStats : MonoBehaviour
     public GolemBehaviour golemBehaviour;
     public CanvasGroup canvasGroup;
 
+    public GameObject spellPagePrefab;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -69,6 +71,7 @@ public class EnemyStats : MonoBehaviour
 
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+
         if (currentHealth <= 0)
         {
             DeathAction();
@@ -89,6 +92,11 @@ public class EnemyStats : MonoBehaviour
         else if(SceneManager.GetActiveScene().buildIndex == 3)
         {
             Invoke("SetStartLoadingFire", 3f);
+        }
+        else if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            Vector2 pos = new Vector2(25f, -3.5f);
+            Instantiate(spellPagePrefab, pos, Quaternion.identity);
         }
 
     }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreenUI : MonoBehaviour
 {
+    public PlayerStats playerStats;
+    public GameObject deathscreen;
 
     public void LoadMainMenu()
     {
@@ -17,7 +19,11 @@ public class DeathScreenUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().ToString());
+    }
 
-
+    public void RefillHP()
+    {
+        playerStats.currentHealth = 100;
+        deathscreen.SetActive(false);
     }
 }

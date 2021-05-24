@@ -52,7 +52,10 @@ public class PlayerStats : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            PlayerDeath();
+            while(currentHealth != maxHealth)
+            {
+                currentHealth += 5;
+            }
         }
     }
 
