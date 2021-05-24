@@ -2737,6 +2737,7 @@ MonoBehaviour:
   - {fileID: 1395725703}
   - {fileID: 698415570}
   description3: {fileID: 795722384}
+  SpellArchives: {fileID: 0}
 --- !u!1 &156609841
 GameObject:
   m_ObjectHideFlags: 0
@@ -17024,8 +17025,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1988448035
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b7be9a636298bbd4ab035f7b7b9a1839, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -53558,9 +53559,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1988448035
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6f01209e869dff74da655a9ad522ed4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
