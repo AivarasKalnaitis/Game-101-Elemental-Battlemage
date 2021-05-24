@@ -28350,7 +28350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerGO: {fileID: 4500899052995748422}
-  spellTemp: {fileID: 797076589}
+  spellTemp: {fileID: 2107754260}
   SpellRestingTime: 0
 --- !u!114 &1224905724
 MonoBehaviour:
