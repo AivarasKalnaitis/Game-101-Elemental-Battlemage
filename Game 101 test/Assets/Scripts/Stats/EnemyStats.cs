@@ -87,7 +87,7 @@ public class EnemyStats : MonoBehaviour
         {
             Vector2 pos = new Vector2(-4, -2);
             Instantiate(devastationPrefab, pos, Quaternion.identity);
-            Invoke("SetStartLoadingWater", 7f);
+            Invoke("SetStartLoadingWater", 5f);
         }
         else if(SceneManager.GetActiveScene().buildIndex == 3)
         {
