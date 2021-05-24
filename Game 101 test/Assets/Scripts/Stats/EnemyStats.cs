@@ -23,7 +23,7 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        currentHealth = 1200;
+        currentHealth = 400;
         healthBar.SetMaxHealth(maxHealth);
         DeathTime = 0f;
     }

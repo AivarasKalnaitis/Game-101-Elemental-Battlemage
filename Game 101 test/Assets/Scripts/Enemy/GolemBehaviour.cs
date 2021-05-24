@@ -147,6 +147,7 @@ public class GolemBehaviour : EnemyMovement
         var boulder = Instantiate(boulderPrefab, spawnPos, Quaternion.identity);
 
         boulder.transform.position = Vector2.MoveTowards(spawnPos, playerPos, 4f * Time.deltaTime);
+        boulder.GetComponent<Rigidbody2D>().AddForce(transform.forward * 1000f);
     }
 
     void WaterStageAttacks()
