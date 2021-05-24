@@ -13,6 +13,8 @@ public class BookManager : MonoBehaviour
     public TextMeshProUGUI description3;
     private int currentPageIndex;
     private int maxPageIndex;
+    public GameObject SpellArchives;
+
     void Start()
     {
        // BookPages = new List<GameObject>();

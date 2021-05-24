@@ -41,10 +41,13 @@ public class Inventory : MonoBehaviour
         if (inventoryEnabled)
         {
             inventory.SetActive(true);
+            Time.timeScale = 0f;
         }
         else
         {
             inventory.SetActive(false);
+            Time.timeScale = 1f;
+
         }
 
     }

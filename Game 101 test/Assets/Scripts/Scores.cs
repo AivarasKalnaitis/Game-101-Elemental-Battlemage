@@ -26,6 +26,8 @@ public class Scores : MonoBehaviour
         EndScreen.SetActive(true);
 
     }
+
+    public void DontDestroyOnLoad(){}
     
     
 }
