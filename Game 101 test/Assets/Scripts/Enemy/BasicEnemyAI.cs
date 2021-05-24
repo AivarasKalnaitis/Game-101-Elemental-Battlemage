@@ -50,7 +50,7 @@ public class BasicEnemyAI : MonoBehaviour
 
         if (Path.Count == 0)
         {
-            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+            Path.Add(PlayerGO.transform.GetComponent<Node>());
         }
 
 //        void FindPathTimed()
@@ -123,7 +123,7 @@ public class BasicEnemyAI : MonoBehaviour
                 }
             }
 
-            Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
+            //Path.Add(PlayerGO.transform.Find("Node").GetComponent<Node>());
 //        Path[0] = PlayerGO.GetComponent<PlayerMovement>().playerNode;
         }
 
